@@ -1,5 +1,9 @@
 // DATA MODEL
-// var player;
+var computer = {
+  name: 'Computer',
+  token: '🤖',
+  wins: 0
+}
 
 // VARIABLES
 chooseGameView = document.querySelector('.choose-game-view');
@@ -11,12 +15,17 @@ gameBoxesContainer = document.querySelector('.game-boxes');
 fighterContainer = document.querySelector('.icons');
 userIcon = document.querySelector('.user-icon');
 userName = document.querySelector('.user-name');
+userWins = document.querySelector('.user-wins');
+computerIcon = document.querySelector('.computer-icon');
+computerName = document.querySelector('.computer-name');
+computerWins = document.querySelector('.computer-wins');
 
 // EVENT LISTENERS
 window.addEventListener('load', function() {
   createPlayer('Player', '😄');
+  displayPlayers(player, computer);
+  displayWins(player, computer);
 });
-
 
 gameBoxesContainer.addEventListener('click', function(event) {
   if (event.target.classList.contains('classic')) {
@@ -75,9 +84,18 @@ function createPlayer(name, token, wins = 0) {
   }
 }
 
-// function displayPlayers(player) {
-//   userIcon.innerText = player.token;
-// }
+function displayPlayers(player1, player2) {
+  userIcon.innerText = player1.token;
+  userName.innerText = player1.name;
+
+  computerIcon.innerText = player2.token;
+  computerName.innerText = player2.name;
+}
+
+function displayWins(player1, player2) {
+  userWins.innerText = player1.wins;
+  computerWins.innerText = player2.wins;
+}
 
 // HELPER FUNCTIONS
 
