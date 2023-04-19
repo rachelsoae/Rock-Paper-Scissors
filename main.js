@@ -35,22 +35,11 @@ gameBoxesContainer.addEventListener('click', function(event) {
 button.addEventListener('click', chooseGame);
 
 fighterContainer.addEventListener('click', function() {
-    showFightResult();
-  // invoke function that will save to data model and insert user's selection to HTML
+  createGame();  
+  showFightResult();
 })
 
 // FUNCTIONS
-
-function createPlayer(name, token, wins = 0) {
-  var player = {
-    name: name,
-    token: token,
-    wins: wins
-  }
-  players.push(player);
-  return player;
-}
-
 function show(element) {
   element.classList.remove('hidden');
 }
@@ -91,6 +80,16 @@ function showFightResult() {
   hide(variationView);
 }
 
+function createPlayer(name, token, wins = 0) {
+  var player = {
+    name: name,
+    token: token,
+    wins: wins
+  }
+  players.push(player);
+  return player;
+}
+
 function displayPlayers(player1, player2) {
   player1Icon.innerText = player1.token;
   player1Name.innerText = player1.name;
@@ -104,3 +103,6 @@ function displayWins(player1, player2) {
   player2Wins.innerText = player2.wins;
 }
 
+function createGame(player1, player2) {
+
+}

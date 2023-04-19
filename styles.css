@@ -50,6 +50,10 @@ h3 {
   font-weight: 400;
 }
 
+.classic, .variation, .icons, button {
+  cursor: pointer;
+}
+
 /* MAIN SECTION */
 
 main {
