@@ -85,12 +85,20 @@ h1 {
 
 .game-box {
   height: 40%;
-  width: 30%;
+  width: 35%;
+  border-radius: 40px;
+  border: dotted white;
   display: flex;
   flex-direction: column;
   align-items: center;
   background-color: #45B69C;
   text-align: center;
+}
+
+.game-box:hover {
+  background-color: #EEB868;
+  color: white;
+ 
 }
 
 ul {
