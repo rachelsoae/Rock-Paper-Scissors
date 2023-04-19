@@ -2,10 +2,10 @@
 chooseGameView = document.querySelector('.choose-game-view');
 chooseFighterClassicView = document.querySelector('.choose-fighter-classic');
 chooseFighterVariationView = document.querySelector('.choose-fighter-variation');
-fightResultView = document.querySelector('.fight-result');
+fightResultView = document.querySelector('.fight-result-view');
 button = document.querySelector('button');
 gameBoxesContainer = document.querySelector('.game-boxes');
-// fighterContainer = document.querySelector('icons');
+fighterContainer = document.querySelector('.icons');
 
 // EVENT LISTENERS
 gameBoxesContainer.addEventListener('click', function(event) {
@@ -18,12 +18,10 @@ gameBoxesContainer.addEventListener('click', function(event) {
 
 button.addEventListener('click', chooseGame);
 
-// fighterContainer.addEventListener('click', function(event) {
-//   console.log(event.target.tagName)
-//   if (event.target.tagName === 'IMG') {
-//     showFightResult();
-//   }
-// })
+fighterContainer.addEventListener('click', function() {
+    showFightResult();
+  // invoke function that will save to data model and insert user's selection to HTML
+})
 
 // FUNCTIONS
 
