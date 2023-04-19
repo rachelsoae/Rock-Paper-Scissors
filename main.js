@@ -3,7 +3,7 @@ var user;
 var computer;
 var game;
 
-// VARIABLES
+// DOM VARIABLES
 chooseGameView = document.querySelector('.choose-game-view');
 classicView = document.querySelector('.choose-fighter-classic');
 variationView = document.querySelector('.choose-fighter-variation');
@@ -17,6 +17,7 @@ player1Wins = document.querySelector('.player1-wins');
 player2Icon = document.querySelector('.player2-icon');
 player2Name = document.querySelector('.player2-name');
 player2Wins = document.querySelector('.player2-wins');
+result = document.querySelector('.result');
 
 // EVENT LISTENERS
 window.addEventListener('load', function() {
@@ -28,18 +29,19 @@ window.addEventListener('load', function() {
 
 gameBoxesContainer.addEventListener('click', function(event) {
   if (event.target.classList.contains('classic')) {
-    var game = createGame('classic', user, computer);
+    game = createGame('classic', user, computer);
   } else if (event.target.classList.contains('variation')) {
-    var game = createGame('variation', user, computer);
+    game = createGame('variation', user, computer);
   }
+
   displayGame(game);
 });
 
 button.addEventListener('click', chooseGame);
 
-fighterContainer.addEventListener('click', function() { 
-  showFightResult();
-})
+fighterContainer.addEventListener('click', function(event) { 
+  playGame(game, event.target, user, computer);
+});
 
 // FUNCTIONS
 function show(element) {
@@ -107,8 +109,7 @@ function displayWins(player1, player2) {
 function createGame(type, player1, player2) {
     game = {
       type: type,
-      player1: player1,
-      player2: player2
+      players: [player1, player2]
     }   
     return game;
 }
@@ -121,6 +122,41 @@ function displayGame(game) {
   }
 }
 
-// function generateComputerChoice() {
+function playGame(game, userSelection, player1, player2) {
+  game.players[0].fighter = userSelection.className;
+  game.players[1].fighter = getComputerFighter(game);
+  var fighter1 = game.players[0].fighter;
+  var fighter2 = game.players[1].fighter;
+  var winner;
+  
 
-// }
+  if ((fighter1 === 'rock' && fighter2 === 'scissors') || (fighter1 === 'paper' && fighter2 === 'rock') || (fighter1 === 'scissors' && fighter2 === 'paper')) {
+    winner = player1;
+    winner.wins += 1;
+    showFightResult();
+    result.innerText = 'Player has won!'
+    displayWins(player1, player2);
+  } else if ((fighter2 === 'rock' && fighter1 === 'scissors') || (fighter2 === 'paper' && fighter1 === 'rock') || (fighter2 === 'scissors' && fighter1 === 'paper')) {
+    winner = player2;
+    winner.wins += 1;
+    showFightResult();
+    result.innerText = 'Computer has won!'
+    displayWins(player1, player2);
+  } else {
+    drawGame(player1, player2);
+  }
+}
+
+function getComputerFighter(game) {
+  if (game.type === 'classic') {
+    var options = ['rock', 'paper', 'scissors'];
+    var index = Math.floor(Math.random() * 3);
+    var fighter = options[index];
+    return fighter;
+  }
+}
+
+function drawGame() {
+  showFightResult();
+  result.innerText = `It's a draw!`;
+}
