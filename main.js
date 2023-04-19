@@ -1,7 +1,7 @@
 // VARIABLES
 chooseGameView = document.querySelector('.choose-game-view');
-chooseFighterClassicView = document.querySelector('.choose-fighter-classic');
-chooseFighterVariationView = document.querySelector('.choose-fighter-variation');
+classicView = document.querySelector('.choose-fighter-classic');
+variationView = document.querySelector('.choose-fighter-variation');
 fightResultView = document.querySelector('.fight-result-view');
 button = document.querySelector('button');
 gameBoxesContainer = document.querySelector('.game-boxes');
@@ -26,26 +26,26 @@ fighterContainer.addEventListener('click', function() {
 // FUNCTIONS
 
 function showClassicView() {
-  show(chooseFighterClassicView);
+  show(classicView);
   show(button);
   hide(chooseGameView);
-  hide(chooseFighterVariationView);
+  hide(variationView);
   hide(fightResultView);
 }
 
 function showVariationView() {
-  show(chooseFighterVariationView);
+  show(variationView);
   show(button);
   hide(chooseGameView);
-  hide(chooseFighterClassicView);
+  hide(classicView);
   hide(fightResultView);
 }
 
 function chooseGame() {
   show(chooseGameView);
   hide(button);
-  hide(chooseFighterClassicView);
-  hide(chooseFighterVariationView);
+  hide(classicView);
+  hide(variationView);
   hide(fightResultView);
 }
 
@@ -53,8 +53,8 @@ function showFightResult() {
   show(fightResultView);
   show(button);
   hide(chooseGameView);
-  hide(chooseFighterClassicView);
-  hide(chooseFighterVariationView);
+  hide(classicView);
+  hide(variationView);
 }
 
 // HELPER FUNCTIONS
