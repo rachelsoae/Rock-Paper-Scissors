@@ -10,6 +10,8 @@ gameBoxesContainer = document.querySelector('.game-boxes');
 gameBoxesContainer.addEventListener('click', function(event) {
   if (event.target.classList.contains('classic')) {
     showClassicView();
+  } else if (event.target.classList.contains('variation')) {
+    showVariationView();
   }
 });
 
@@ -20,6 +22,14 @@ function showClassicView() {
   show(button);
   hide(chooseGameView);
   hide(chooseFighterVariationView);
+  hide(fightResultView);
+}
+
+function showVariationView() {
+  show(chooseFighterVariationView);
+  show(button);
+  hide(chooseGameView);
+  hide(chooseFighterClassicView);
   hide(fightResultView);
 }
 
