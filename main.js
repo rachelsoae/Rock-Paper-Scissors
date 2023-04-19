@@ -5,6 +5,7 @@ chooseFighterVariationView = document.querySelector('.choose-fighter-variation')
 fightResultView = document.querySelector('.fight-result');
 button = document.querySelector('button');
 gameBoxesContainer = document.querySelector('.game-boxes');
+// fighterContainer = document.querySelector('icons');
 
 // EVENT LISTENERS
 gameBoxesContainer.addEventListener('click', function(event) {
@@ -14,6 +15,15 @@ gameBoxesContainer.addEventListener('click', function(event) {
     showVariationView();
   }
 });
+
+button.addEventListener('click', chooseGame);
+
+// fighterContainer.addEventListener('click', function(event) {
+//   console.log(event.target.tagName)
+//   if (event.target.tagName === 'IMG') {
+//     showFightResult();
+//   }
+// })
 
 // FUNCTIONS
 
@@ -31,6 +41,22 @@ function showVariationView() {
   hide(chooseGameView);
   hide(chooseFighterClassicView);
   hide(fightResultView);
+}
+
+function chooseGame() {
+  show(chooseGameView);
+  hide(button);
+  hide(chooseFighterClassicView);
+  hide(chooseFighterVariationView);
+  hide(fightResultView);
+}
+
+function showFightResult() {
+  show(fightResultView);
+  show(button);
+  hide(chooseGameView);
+  hide(chooseFighterClassicView);
+  hide(chooseFighterVariationView);
 }
 
 // HELPER FUNCTIONS
