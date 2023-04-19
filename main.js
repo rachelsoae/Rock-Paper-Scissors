@@ -1,5 +1,7 @@
 // DATA MODEL
-var players = [];
+var user;
+var computer;
+var game;
 
 // VARIABLES
 chooseGameView = document.querySelector('.choose-game-view');
@@ -18,24 +20,24 @@ player2Wins = document.querySelector('.player2-wins');
 
 // EVENT LISTENERS
 window.addEventListener('load', function() {
-  var user = createPlayer('Player', '😄');
-  var computer = createPlayer('Computer', '🤖')
+  user = createPlayer('Player', '😄');
+  computer = createPlayer('Computer', '🤖')
   displayPlayers(user, computer);
   displayWins(user, computer);
 });
 
 gameBoxesContainer.addEventListener('click', function(event) {
   if (event.target.classList.contains('classic')) {
-    showClassicView();
+    var game = createGame('classic', user, computer);
   } else if (event.target.classList.contains('variation')) {
-    showVariationView();
+    var game = createGame('variation', user, computer);
   }
+  displayGame(game);
 });
 
 button.addEventListener('click', chooseGame);
 
-fighterContainer.addEventListener('click', function() {
-  createGame();  
+fighterContainer.addEventListener('click', function() { 
   showFightResult();
 })
 
@@ -86,7 +88,6 @@ function createPlayer(name, token, wins = 0) {
     token: token,
     wins: wins
   }
-  players.push(player);
   return player;
 }
 
@@ -103,6 +104,23 @@ function displayWins(player1, player2) {
   player2Wins.innerText = player2.wins;
 }
 
-function createGame(player1, player2) {
-
+function createGame(type, player1, player2) {
+    game = {
+      type: type,
+      player1: player1,
+      player2: player2
+    }   
+    return game;
 }
+
+function displayGame(game) {
+  if (game.type === 'classic') {
+    showClassicView();
+  } else {
+    showVariationView();
+  }
+}
+
+// function generateComputerChoice() {
+
+// }
