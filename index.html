@@ -12,14 +12,14 @@
       <p class="side-panel-icon">😄</p>
       <h2 class="side-panel-header">Player</h2>
       <h3>Wins: #</h3>
-      <button>Change Game?</button>
+      <button class="hidden">Change Game?</button>
     </section>
     <main class="panel">
       <h1>Rock, Paper, Scissors</h1>
       <div class="view choose-game-view"> 
         <h2 class="view-header">Choose Your Game!</h2>
-        <div class="boxes">
-          <section class="game-box">
+        <div class="game-boxes">
+          <section class="game-box classic">
             <h3>Classic</h3>
             <ul>
               <li>🪨 rock beats paper 📄</li>
@@ -27,9 +27,10 @@
               <li>✂️ scissors beat rock 🪨</li>
             </ul>
           </section>
-          <section class="game-box">
+          <section class="game-box variation">
             <h3>VARIATION</h3>
             <ul>
+              <li>DESCRIPTION</li>
               <li>DESCRIPTION</li>
               <li>DESCRIPTION</li>
               <li>DESCRIPTION</li>
@@ -37,12 +38,21 @@
           </section>
         </div>
       </div>
-      <div class="view choose-fighter-view hidden"> 
+      <div class="view choose-fighter-classic hidden"> 
         <h2 class="view-header">Choose Your Fighter!</h2>
         <section class="icons">
           <img src="assets/happy-rocks.png" alt="a big and small rock sitting in a tuft of grass with happy smiling faces">
           <img src="assets/happy-paper.png" alt="a lined piece of paper with a happy smiling face">
           <img src="assets/happy-scissors.png" alt="a pair of scissors">
+        </section>
+      </div>
+      <div class="view choose-fighter-variation hidden"> 
+        <h2 class="view-header">Choose Your Fighter!</h2>
+        <section class="icons">
+          <!-- <img src= alt=>
+          <img src= alt=>
+          <img src= alt=>
+          <img src= alt=> -->
         </section>
       </div>
       <div class="view fight-result-view hidden"> 
@@ -57,6 +67,6 @@
       <h2 class="side-panel-header">Computer</h2>
       <h3>Wins: #</h3>
     </section>
-  <!-- <script src="main.js"> -->
+  <script src="./main.js"></script>
   </body>
 </html>
