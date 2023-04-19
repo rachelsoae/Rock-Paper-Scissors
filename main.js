@@ -1,9 +1,5 @@
 // DATA MODEL
-var computer = {
-  name: 'Computer',
-  token: '🤖',
-  wins: 0
-}
+var players = [];
 
 // VARIABLES
 chooseGameView = document.querySelector('.choose-game-view');
@@ -13,18 +9,19 @@ fightResultView = document.querySelector('.fight-result-view');
 button = document.querySelector('button');
 gameBoxesContainer = document.querySelector('.game-boxes');
 fighterContainer = document.querySelector('.icons');
-userIcon = document.querySelector('.user-icon');
-userName = document.querySelector('.user-name');
-userWins = document.querySelector('.user-wins');
-computerIcon = document.querySelector('.computer-icon');
-computerName = document.querySelector('.computer-name');
-computerWins = document.querySelector('.computer-wins');
+player1Icon = document.querySelector('.player1-icon');
+player1Name = document.querySelector('.player1-name');
+player1Wins = document.querySelector('.player1-wins');
+player2Icon = document.querySelector('.player2-icon');
+player2Name = document.querySelector('.player2-name');
+player2Wins = document.querySelector('.player2-wins');
 
 // EVENT LISTENERS
 window.addEventListener('load', function() {
-  createPlayer('Player', '😄');
-  displayPlayers(player, computer);
-  displayWins(player, computer);
+  var user = createPlayer('Player', '😄');
+  var computer = createPlayer('Computer', '🤖')
+  displayPlayers(user, computer);
+  displayWins(user, computer);
 });
 
 gameBoxesContainer.addEventListener('click', function(event) {
@@ -43,6 +40,24 @@ fighterContainer.addEventListener('click', function() {
 })
 
 // FUNCTIONS
+
+function createPlayer(name, token, wins = 0) {
+  var player = {
+    name: name,
+    token: token,
+    wins: wins
+  }
+  players.push(player);
+  return player;
+}
+
+function show(element) {
+  element.classList.remove('hidden');
+}
+
+function hide(element) {
+  element.classList.add('hidden');
+}
 
 function showClassicView() {
   show(classicView);
@@ -76,33 +91,16 @@ function showFightResult() {
   hide(variationView);
 }
 
-function createPlayer(name, token, wins = 0) {
-  return player = {
-    name: name,
-    token: token,
-    wins: wins
-  }
-}
-
 function displayPlayers(player1, player2) {
-  userIcon.innerText = player1.token;
-  userName.innerText = player1.name;
+  player1Icon.innerText = player1.token;
+  player1Name.innerText = player1.name;
 
-  computerIcon.innerText = player2.token;
-  computerName.innerText = player2.name;
+  player2Icon.innerText = player2.token;
+  player2Name.innerText = player2.name;
 }
 
 function displayWins(player1, player2) {
-  userWins.innerText = player1.wins;
-  computerWins.innerText = player2.wins;
+  player1Wins.innerText = player1.wins;
+  player2Wins.innerText = player2.wins;
 }
 
-// HELPER FUNCTIONS
-
-function show(element) {
-  element.classList.remove('hidden');
-}
-
-function hide(element) {
-  element.classList.add('hidden');
-}
