@@ -3,6 +3,11 @@
   main background: #21D19F (mint)
   side panels background: #45B69C (keppel)
   button: #EEB868 (earth yellow)
+  Harry: 👦🏻
+  Malfoy: 👦🏼
+  Snape: 👩🏻
+  Dumbledore: 🧙🏻‍♂️
+  Voldemort: 👩🏻‍🦲
 */
 
 /* GENERAL */
@@ -88,8 +93,6 @@ h1 {
 }
 
 .game-box {
-  height: 40%;
-  width: 35%;
   border-radius: 40px;
   border: dotted white;
   display: flex;
@@ -101,8 +104,6 @@ h1 {
 
 .game-box:hover {
   background-color: #EEB868;
-  color: white;
- 
 }
 
 ul {
@@ -124,6 +125,16 @@ img {
   width: 25%;
 }
 
+.classic-box {
+  width: 30%;
+  height: 35%;
+}
+
+.wizard-box {
+  width: 50%;
+  height: 45%;
+}
+
 .wizards {
   width: 75%;
   flex-wrap: wrap;
@@ -132,6 +143,10 @@ img {
 .wizard {
   width: 25%;
   margin: 0.5em;
+}
+
+.box-header {
+  margin: 3rem;
 }
 
 /* SIDE PANELS */
