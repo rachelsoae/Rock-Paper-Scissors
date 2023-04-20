@@ -2,6 +2,8 @@
 var user;
 var computer;
 var game;
+var fighter1;
+var fighter2;
 
 // DOM VARIABLES
 chooseGameView = document.querySelector('.choose-game-view');
@@ -44,11 +46,10 @@ gameBoxesContainer.addEventListener('click', function(event) {
 button.addEventListener('click', displayChooseGameView);
 
 fighterContainer.addEventListener('click', function(event) { 
-  playGame(game, event.target, user, computer);
-  setTimeout(reset, 1250, game);
+  updateFighters(game, event.target);
 });
 
-// FUNCTIONS
+// FUNCTIONS - DATA MODEL
 function createPlayer(name, token, wins = 0) {
   var player = {
     name: name,
@@ -56,7 +57,7 @@ function createPlayer(name, token, wins = 0) {
     wins: wins
   }
   return player;
-}
+};
 
 function createGame(type, player1, player2) {
   game = {
@@ -64,15 +65,61 @@ function createGame(type, player1, player2) {
     players: [player1, player2]
   }   
   return game;
+};
+
+function winFight(player) {
+  player.wins += 1;
+  return player;
 }
 
+function getComputerFighter(game) {
+  if (game.type === 'classic') {
+    var options = ['rock', 'paper', 'scissors'];
+    var index = Math.floor(Math.random() * 3);
+    var fighter = options[index];
+    return fighter;
+  }
+};
+
+function updateFighters(game, userSelection) {
+  game.players[0].fighter = userSelection.className;
+  game.players[1].fighter = getComputerFighter(game);
+  fighter1 = game.players[0].fighter;
+  fighter2 = game.players[1].fighter;
+
+  if (fighter1 === fighter2) {
+    announceDraw();
+  } else {
+    determineWinner(game);
+  }
+
+  displayResult(game); 
+  
+  return game;
+};
+
+function determineWinner(game) {
+  var winner;
+
+  if ((fighter1 === 'rock' && fighter2 === 'scissors') || (fighter1 === 'paper' && fighter2 === 'rock') || (fighter1 === 'scissors' && fighter2 === 'paper')) {
+    winner = game.players[0]; 
+  } else {
+    winner = game.players[1];
+  }
+
+  winFight(winner);
+  announceWinner(winner);
+  return game;
+};
+
+// FUNCTIONS - DOM
 function show(element) {
   element.classList.remove('hidden');
-}
+};
 
 function hide(element) {
   element.classList.add('hidden');
-}
+};
 
 function displayClassicView() {
   show(classicView);
@@ -80,7 +127,7 @@ function displayClassicView() {
   hide(chooseGameView);
   hide(variationView);
   hide(resultView);
-}
+};
 
 function displayVariationView() {
   show(variationView);
@@ -88,7 +135,7 @@ function displayVariationView() {
   hide(chooseGameView);
   hide(classicView);
   hide(resultView);
-}
+};
 
 function displayChooseGameView() {
   show(chooseGameView);
@@ -96,14 +143,17 @@ function displayChooseGameView() {
   hide(classicView);
   hide(variationView);
   hide(resultView);
-}
+};
 
-function displayResult() {
+function displayResult(game) {
   show(resultView);
   show(button);
   hide(chooseGameView);
   hide(classicView);
   hide(variationView);
+  displayFighter(fighter1);
+  displayFighter(fighter2); 
+  setTimeout(reset, 1250, game);
 };
 
 function displayPlayers(player1, player2) {
@@ -127,41 +177,6 @@ function displayGame(game) {
   }
 };
 
-
-function getComputerFighter(game) {
-  if (game.type === 'classic') {
-    var options = ['rock', 'paper', 'scissors'];
-    var index = Math.floor(Math.random() * 3);
-    var fighter = options[index];
-    return fighter;
-  }
-};
-
-function playGame(game, userSelection, player1, player2) {
-  game.players[0].fighter = userSelection.className;
-  game.players[1].fighter = getComputerFighter(game);
-  var fighter1 = game.players[0].fighter;
-  var fighter2 = game.players[1].fighter;
-  var winner;
-  
-  if ((fighter1 === 'rock' && fighter2 === 'scissors') || (fighter1 === 'paper' && fighter2 === 'rock') || (fighter1 === 'scissors' && fighter2 === 'paper')) {
-    winner = player1;
-    winFight(winner);
-    announceWinner(winner);
-  } else if ((fighter2 === 'rock' && fighter1 === 'scissors') || (fighter2 === 'paper' && fighter1 === 'rock') || (fighter2 === 'scissors' && fighter1 === 'paper')) {
-    winner = player2;
-    winFight(winner);
-    announceWinner(winner);
-  } else {
-    announceDraw();
-  }
-
-  displayResult(); 
-  displayFighter(fighter1);
-  displayFighter(fighter2); 
-  displayWins(player1, player2);
-};
-
 function displayFighter(fighter) {
   switch (fighter) {
     case 'rock':
@@ -176,14 +191,10 @@ function displayFighter(fighter) {
   };
 };
 
-function winFight(winner) {
-  winner.wins += 1;
-  return winner;
+function announceWinner(player) {
+  result.innerText = `${player.name} won this round!`
+  displayWins(user, computer);
 }
-
-function announceWinner(winner) {
-  result.innerText = `${winner.name} won this round!`
-};
 
 function announceDraw() {
   result.innerText = `It's a draw!`;
@@ -196,4 +207,4 @@ function reset(game) {
   } else {
     displayVariationView();
   }
-}
+};
