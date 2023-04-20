@@ -45,6 +45,7 @@ button.addEventListener('click', displayChooseGameView);
 
 fighterContainer.addEventListener('click', function(event) { 
   playGame(game, event.target, user, computer);
+  setTimeout(reset, 1250, game);
 });
 
 // FUNCTIONS
@@ -156,26 +157,23 @@ function playGame(game, userSelection, player1, player2) {
   }
 
   displayResult(); 
-  displayFighters(fighter1, fighter2); 
+  displayFighter(fighter1);
+  displayFighter(fighter2); 
   displayWins(player1, player2);
 };
 
-function displayFighters(fighter1, fighter2) {
-  if (fighter1 === 'rock') {
-    fighterSection.innerHTML = `<img src="assets/happy-rocks.png" alt="a big and small rock sitting in a tuft of grass with happy smiling faces" class="rock">`;
-  } else if (fighter1 === 'paper') {
-    fighterSection.innerHTML = `<img src="assets/happy-paper.png" alt="a lined piece of paper with a happy smiling face" class="paper">`
-  } else if (fighter1 === 'scissors') {
-    fighterSection.innerHTML = `<img src="assets/happy-scissors.png" alt="a pair of scissors" class="scissors">`
-  }
-
-  if (fighter2 === 'rock') {
-    fighterSection.innerHTML += `<img src="assets/happy-rocks.png" alt="a big and small rock sitting in a tuft of grass with happy smiling faces" class="rock">`
-  } else if (fighter2 === 'paper') {
-    fighterSection.innerHTML += `<img src="assets/happy-paper.png" alt="a lined piece of paper with a happy smiling face" class="paper">`
-  } else if (fighter2 === 'scissors') {
-    fighterSection.innerHTML += `<img src="assets/happy-scissors.png" alt="a pair of scissors" class="scissors">`
-  }
+function displayFighter(fighter) {
+  switch (fighter) {
+    case 'rock':
+      fighterSection.innerHTML += `<img src="assets/happy-rocks.png" alt="a big and small rock sitting in a tuft of grass with happy smiling faces" class="rock">`;
+      break;
+    case 'paper':
+      fighterSection.innerHTML += `<img src="assets/happy-paper.png" alt="a lined piece of paper with a happy smiling face" class="paper">`;
+      break;
+    case 'scissors':
+      fighterSection.innerHTML += `<img src="assets/happy-scissors.png" alt="a pair of scissors" class="scissors">`;
+      break;
+  };
 };
 
 function winFight(winner) {
@@ -191,6 +189,11 @@ function announceDraw() {
   result.innerText = `It's a draw!`;
 };
 
-// function reset() {
-//   fighterSection.innerHTML = '';
-// }
+function reset(game) {
+  fighterSection.innerHTML = '';
+  if (game.type = 'classic') {
+    displayClassicView();
+  } else {
+    displayVariationView();
+  }
+}
