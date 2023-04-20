@@ -44,6 +44,23 @@ fighterContainer.addEventListener('click', function(event) {
 });
 
 // FUNCTIONS
+function createPlayer(name, token, wins = 0) {
+  var player = {
+    name: name,
+    token: token,
+    wins: wins
+  }
+  return player;
+}
+
+function createGame(type, player1, player2) {
+  game = {
+    type: type,
+    players: [player1, player2]
+  }   
+  return game;
+}
+
 function show(element) {
   element.classList.remove('hidden');
 }
@@ -84,15 +101,6 @@ function showFightResult() {
   hide(variationView);
 }
 
-function createPlayer(name, token, wins = 0) {
-  var player = {
-    name: name,
-    token: token,
-    wins: wins
-  }
-  return player;
-}
-
 function displayPlayers(player1, player2) {
   player1Icon.innerText = player1.token;
   player1Name.innerText = player1.name;
@@ -104,14 +112,6 @@ function displayPlayers(player1, player2) {
 function displayWins(player1, player2) {
   player1Wins.innerText = player1.wins;
   player2Wins.innerText = player2.wins;
-}
-
-function createGame(type, player1, player2) {
-    game = {
-      type: type,
-      players: [player1, player2]
-    }   
-    return game;
 }
 
 function displayGame(game) {
@@ -143,7 +143,7 @@ function playGame(game, userSelection, player1, player2) {
     result.innerText = 'Computer has won!'
     displayWins(player1, player2);
   } else {
-    drawGame(player1, player2);
+    announceDraw();
   }
 }
 
@@ -156,7 +156,7 @@ function getComputerFighter(game) {
   }
 }
 
-function drawGame() {
+function announceDraw() {
   showFightResult();
   result.innerText = `It's a draw!`;
 }
