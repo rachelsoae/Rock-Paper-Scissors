@@ -138,8 +138,6 @@ function playGame(game, userSelection, player1, player2) {
   var fighter2 = game.players[1].fighter;
   var winner;
   
-  displayResult();
-
   if ((fighter1 === 'rock' && fighter2 === 'scissors') || (fighter1 === 'paper' && fighter2 === 'rock') || (fighter1 === 'scissors' && fighter2 === 'paper')) {
     winner = player1;
     winFight(winner);
@@ -151,7 +149,8 @@ function playGame(game, userSelection, player1, player2) {
   } else {
     announceDraw();
   }
-  
+
+  displayResult();  
   displayWins(player1, player2);
 };
 
