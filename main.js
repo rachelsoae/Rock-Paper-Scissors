@@ -18,6 +18,10 @@ player2Icon = document.querySelector('.player2-icon');
 player2Name = document.querySelector('.player2-name');
 player2Wins = document.querySelector('.player2-wins');
 result = document.querySelector('.result');
+fighterSection = document.querySelector('.fighters');
+rockImg = document.querySelector('.rock');
+paperImg = document.querySelector('.paper');
+scissorsImg = document.querySelector('.scissors');
 
 // EVENT LISTENERS
 window.addEventListener('load', function() {
@@ -122,6 +126,7 @@ function displayGame(game) {
   }
 };
 
+
 function getComputerFighter(game) {
   if (game.type === 'classic') {
     var options = ['rock', 'paper', 'scissors'];
@@ -150,8 +155,27 @@ function playGame(game, userSelection, player1, player2) {
     announceDraw();
   }
 
-  displayResult();  
+  displayResult(); 
+  displayFighters(fighter1, fighter2); 
   displayWins(player1, player2);
+};
+
+function displayFighters(fighter1, fighter2) {
+  if (fighter1 === 'rock') {
+    fighterSection.innerHTML = `<img src="assets/happy-rocks.png" alt="a big and small rock sitting in a tuft of grass with happy smiling faces" class="rock">`;
+  } else if (fighter1 === 'paper') {
+    fighterSection.innerHTML = `<img src="assets/happy-paper.png" alt="a lined piece of paper with a happy smiling face" class="paper">`
+  } else if (fighter1 === 'scissors') {
+    fighterSection.innerHTML = `<img src="assets/happy-scissors.png" alt="a pair of scissors" class="scissors">`
+  }
+
+  if (fighter2 === 'rock') {
+    fighterSection.innerHTML += `<img src="assets/happy-rocks.png" alt="a big and small rock sitting in a tuft of grass with happy smiling faces" class="rock">`
+  } else if (fighter2 === 'paper') {
+    fighterSection.innerHTML += `<img src="assets/happy-paper.png" alt="a lined piece of paper with a happy smiling face" class="paper">`
+  } else if (fighter2 === 'scissors') {
+    fighterSection.innerHTML += `<img src="assets/happy-scissors.png" alt="a pair of scissors" class="scissors">`
+  }
 };
 
 function winFight(winner) {
@@ -167,4 +191,6 @@ function announceDraw() {
   result.innerText = `It's a draw!`;
 };
 
-
+// function reset() {
+//   fighterSection.innerHTML = '';
+// }
