@@ -12,7 +12,8 @@ variationView = document.querySelector('.choose-fighter-variation');
 resultView = document.querySelector('.result-view');
 button = document.querySelector('button');
 gameBoxesContainer = document.querySelector('.game-boxes');
-fighterContainer = document.querySelector('.icons');
+classicFighterContainer = document.querySelector('.classic-icons');
+variationFighterContainer = document.querySelector('.variation-icons')
 player1Icon = document.querySelector('.player1-icon');
 player1Name = document.querySelector('.player1-name');
 player1Wins = document.querySelector('.player1-wins');
@@ -45,9 +46,14 @@ gameBoxesContainer.addEventListener('click', function(event) {
 
 button.addEventListener('click', displayChooseGameView);
 
-fighterContainer.addEventListener('click', function(event) { 
+classicFighterContainer.addEventListener('click', function(event) { 
   updateFighters(game, event.target);
 });
+
+variationFighterContainer.addEventListener('click', function(event) { 
+  updateFighters(game, event.target);
+});
+
 
 // FUNCTIONS - DATA MODEL
 function createPlayer(name, token, wins = 0) {
@@ -76,13 +82,16 @@ function getComputerFighter(game) {
   if (game.type === 'classic') {
     var options = ['rock', 'paper', 'scissors'];
     var index = Math.floor(Math.random() * 3);
-    var fighter = options[index];
-    return fighter;
+  } else {
+    var options = ['harry', 'malfoy', 'snape', 'voldemort', 'dumbledore'];
+    var index = Math.floor(Math.random() * 5);
   }
+  var fighter = options[index];
+  return fighter;
 };
 
 function updateFighters(game, userSelection) {
-  game.players[0].fighter = userSelection.className;
+  game.players[0].fighter = userSelection.id;
   game.players[1].fighter = getComputerFighter(game);
   fighter1 = game.players[0].fighter;
   fighter2 = game.players[1].fighter;
@@ -101,11 +110,27 @@ function updateFighters(game, userSelection) {
 function determineWinner(game) {
   var winner;
 
-  if ((fighter1 === 'rock' && fighter2 === 'scissors') || (fighter1 === 'paper' && fighter2 === 'rock') || (fighter1 === 'scissors' && fighter2 === 'paper')) {
+  if (
+    (fighter1 === 'rock' && fighter2 === 'scissors') || 
+    (fighter1 === 'paper' && fighter2 === 'rock') || 
+    (fighter1 === 'scissors' && fighter2 === 'paper') || 
+    (fighter1 === 'harry' && fighter2 === 'voldemort') ||
+    (fighter1 === 'harry' && fighter2 === 'malfoy') ||
+    (fighter1 === 'dumbledore' && fighter2 === 'harry') || 
+    (fighter1 === 'dumbledore' && fighter2 === 'voldemort') ||
+    (fighter1 === 'snape' && fighter2 === 'dumbledore') || 
+    (fighter1 === 'snape' && fighter2 === 'harry') || 
+    (fighter1 === 'voldemort' && fighter2 === 'snape') || 
+    (fighter1 === 'voldemort' && fighter2 === 'malfoy') ||
+    (fighter1 === 'malfoy' && fighter2 === 'dumbledore') ||
+    (fighter1 === 'malfoy' && fighter2 === 'snape')
+  ) {
     winner = game.players[0]; 
   } else {
     winner = game.players[1];
   }
+
+  console.log('fighters', fighter1, fighter2)
 
   winFight(winner);
   announceWinner(winner);
@@ -188,6 +213,21 @@ function displayFighter(fighter) {
     case 'scissors':
       fighterSection.innerHTML += `<img src="assets/happy-scissors.png" alt="a pair of scissors" class="scissors">`;
       break;
+    case 'harry':
+      fighterSection.innerHTML += `<img src="assets/harry.png" alt="cartoon of Harry Potter" class="wizard" id="harry">`;
+      break;
+    case 'malfoy':
+      fighterSection.innerHTML += `<img src="assets/malfoy.png" alt="cartoon of Draco Malfoy" class="wizard" id="malfoy">`;
+      break;
+    case 'snape':
+      fighterSection.innerHTML += `<img src="assets/snape.png" alt="cartoon of Severus Snape" class="wizard" id="snape">`;
+      break;
+    case 'voldemort':
+      fighterSection.innerHTML += `<img src="assets/voldemort.png" alt="cartoon of Lord Voldemort" class="wizard" id="voldemort">`;
+      break;
+    case 'dumbledore':
+      fighterSection.innerHTML += `<img src="assets/dumbledore.png" alt="cartoon of Albus Dumbledore" class="wizard" id="dumbledore">`;
+      break;
   };
 };
 
@@ -202,9 +242,5 @@ function announceDraw() {
 
 function reset(game) {
   fighterSection.innerHTML = '';
-  if (game.type = 'classic') {
-    displayClassicView();
-  } else {
-    displayVariationView();
-  }
+  displayGame(game);
 };
