@@ -124,6 +124,16 @@ img {
   width: 25%;
 }
 
+.wizards {
+  width: 75%;
+  flex-wrap: wrap;
+}
+
+.wizard {
+  width: 25%;
+  margin: 0.5em;
+}
+
 /* SIDE PANELS */
 
 .side-panel {
