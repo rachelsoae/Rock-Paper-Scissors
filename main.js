@@ -45,6 +45,7 @@ button.addEventListener('click', displayChooseGameView);
 
 fighterContainer.addEventListener('click', function(event) { 
   playGame(game, event.target, user, computer);
+  setTimeout(reset, 1250, game);
 });
 
 // FUNCTIONS
@@ -188,6 +189,11 @@ function announceDraw() {
   result.innerText = `It's a draw!`;
 };
 
-function reset() {
+function reset(game) {
   fighterSection.innerHTML = '';
+  if (game.type = 'classic') {
+    displayClassicView();
+  } else {
+    displayVariationView();
+  }
 }
