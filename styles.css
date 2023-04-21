@@ -2,14 +2,16 @@
   font-family: 'DynaPuff', 'sans serif'  
   main background: #21D19F (mint)
   side panels background: #45B69C (keppel)
-  button: #EEB868 (earth yellow)
+  classic hover: #EEB868 (earth yellow)
+  wizard hover: #772D8B (eminence)
   to use later: #FFEFD3 (papaya whip)
+
 */
   
 /* GENERAL */
 
 * {
-  /* border: 2px solid rgb(0, 166, 255); */
+  /* border: 1px solid rgb(0, 166, 255); */
   color: white;
 }
 
@@ -50,7 +52,7 @@ h3 {
   font-weight: 400;
 }
 
-.classic, .variation, .icons, button {
+.classic, .wizard, .classic-icons, .wizard-icons, button {
   cursor: pointer;
 }
 
@@ -96,10 +98,6 @@ h1 {
   text-align: center;
 }
 
-.game-box:hover {
-  background-color: #EEB868;
-}
-
 ul {
   list-style-type: none;
   padding: 0;
@@ -132,18 +130,38 @@ img {
   width: 50%;
 }
 
+.classic-box, .wizard-box, button {
+  transition: background-color 200ms;
+}
+
+.classic-box:hover, .classic-button:hover {
+  background-color: #EEB868;
+}
+
+.wizard-box:hover, .wizard-button:hover {
+  background-color: #772D8B;
+}
+
 .wizards {
+  height: 100%;
   width: 75%;
   flex-wrap: wrap;
 }
 
-.wizard {
-  width: 25%;
+.wizard-icon {
   margin: 1em 0.5em;
 }
 
 .box-header {
   margin: 3rem;
+}
+
+.wizard-icon, .classic-icon {
+  transition: width 150ms;
+}
+
+.classic-icon:hover, .wizard-icon:hover {
+  width: 28%;
 }
 
 /* SIDE PANELS */
@@ -168,15 +186,15 @@ button {
   width: 80%;font-family: 'DynaPuff', 'sans serif';
   background-color: #21D19F;
   border: dotted white;
+  color: white;
   border-radius: 40px;
   margin: 2.5em;
   font-weight: 400;
   font-size: 2.25rem;
 }
 
-button:hover {
-  background-color: #EEB868;
-  color: white;
+.result {
+  color: #FFEFD3;
 }
 
 /* HIDDEN */
@@ -184,3 +202,6 @@ button:hover {
 .hidden {
   display: none;
 }
+
+/* ANIMATIONS */
+

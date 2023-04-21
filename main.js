@@ -18,12 +18,13 @@ var fighterOptions = {
 // DOM VARIABLES
 chooseGameView = document.querySelector('.choose-game-view');
 classicView = document.querySelector('.choose-fighter-classic');
-variationView = document.querySelector('.choose-fighter-variation');
+wizardView = document.querySelector('.choose-fighter-wizard');
 resultView = document.querySelector('.result-view');
-button = document.querySelector('button');
+classicButton = document.querySelector('.classic-button');
+wizardButton = document.querySelector('.wizard-button');
 gameBoxesContainer = document.querySelector('.game-boxes');
 classicFighterContainer = document.querySelector('.classic-icons');
-variationFighterContainer = document.querySelector('.variation-icons')
+wizardFighterContainer = document.querySelector('.wizard-icons')
 player1Icon = document.querySelector('.player1-icon');
 player1Name = document.querySelector('.player1-name');
 player1Wins = document.querySelector('.player1-wins');
@@ -47,20 +48,21 @@ window.addEventListener('load', function() {
 gameBoxesContainer.addEventListener('click', function(event) {
   if (event.target.classList.contains('classic')) {
     game = createGame('classic', user, computer);
-  } else if (event.target.classList.contains('variation')) {
-    game = createGame('variation', user, computer);
+  } else if (event.target.classList.contains('wizard')) {
+    game = createGame('wizard', user, computer);
   }
 
   displayGame(game);
 });
 
-button.addEventListener('click', displayChooseGameView);
+classicButton.addEventListener('click', displayChooseGameView);
+wizardButton.addEventListener('click', displayChooseGameView);
 
 classicFighterContainer.addEventListener('click', function(event) { 
   updateFighters(game, event.target);
 });
 
-variationFighterContainer.addEventListener('click', function(event) { 
+wizardFighterContainer.addEventListener('click', function(event) { 
   updateFighters(game, event.target);
 });
 
@@ -156,41 +158,6 @@ function displayWins(player1, player2) {
   player2Wins.innerText = player2.wins;
 };
 
-function displayClassicView() {
-  show(classicView);
-  show(button);
-  hide(chooseGameView);
-  hide(variationView);
-  hide(resultView);
-};
-
-function displayVariationView() {
-  show(variationView);
-  show(button);
-  hide(chooseGameView);
-  hide(classicView);
-  hide(resultView);
-};
-
-function displayChooseGameView() {
-  show(chooseGameView);
-  hide(button);
-  hide(classicView);
-  hide(variationView);
-  hide(resultView);
-};
-
-function displayResult(game) {
-  show(resultView);
-  show(button);
-  hide(chooseGameView);
-  hide(classicView);
-  hide(variationView);
-  displayFighter(fighter1);
-  displayFighter(fighter2); 
-  setTimeout(reset, 1250, game);
-};
-
 function displayGame(game) {
   if (game.type === 'classic') {
     displayClassicView();
@@ -199,31 +166,75 @@ function displayGame(game) {
   };
 };
 
+function displayClassicView() {
+  show(classicView);
+  show(classicButton);
+  hide(wizardButton);
+  hide(chooseGameView);
+  hide(wizardView);
+  hide(resultView);
+};
+
+function displayVariationView() {
+  show(wizardView);
+  show(wizardButton);
+  hide(classicButton);
+  hide(chooseGameView);
+  hide(classicView);
+  hide(resultView);
+};
+
+function displayChooseGameView() {
+  show(chooseGameView);
+  hide(classicButton);
+  hide(wizardButton);
+  hide(classicView);
+  hide(wizardView);
+  hide(resultView);
+};
+
+function displayResult(game) {
+  show(resultView);
+  hide(chooseGameView);
+  hide(classicView);
+  hide(wizardView);
+  if (game.type === 'classic') {
+    show(classicButton);
+    hide(wizardButton);
+  } else {
+    show(wizardButton);
+    hide(classicButton);
+  }
+  displayFighter(fighter1);
+  displayFighter(fighter2); 
+  setTimeout(reset, 1250, game);
+};
+
 function displayFighter(fighter) {
   switch (fighter) {
     case 'rock':
-      fighterSection.innerHTML += `<img src="assets/happy-rocks.png" alt="a big and small rock sitting in a tuft of grass with happy smiling faces" class="rock">`;
+      fighterSection.innerHTML += `<img src="assets/happy-rocks.png" alt="a cartoon big and small rock sitting in a tuft of grass with happy smiling faces">`;
       break;
     case 'paper':
-      fighterSection.innerHTML += `<img src="assets/happy-paper.png" alt="a lined piece of paper with a happy smiling face" class="paper">`;
+      fighterSection.innerHTML += `<img src="assets/happy-paper.png" alt="a cartoon lined piece of paper with a happy smiling face">`;
       break;
     case 'scissors':
-      fighterSection.innerHTML += `<img src="assets/happy-scissors.png" alt="a pair of scissors" class="scissors">`;
+      fighterSection.innerHTML += `<img src="assets/happy-scissors.png" alt="a pair of cartoon scissors">`;
       break;
     case 'harry':
-      fighterSection.innerHTML += `<img src="assets/harry.png" alt="cartoon of Harry Potter" class="wizard" id="harry">`;
+      fighterSection.innerHTML += `<img src="assets/harry.png" alt="cartoon of Harry Potter">`;
       break;
     case 'malfoy':
-      fighterSection.innerHTML += `<img src="assets/malfoy.png" alt="cartoon of Draco Malfoy" class="wizard" id="malfoy">`;
+      fighterSection.innerHTML += `<img src="assets/malfoy.png" alt="cartoon of Draco Malfoy">`;
       break;
     case 'snape':
-      fighterSection.innerHTML += `<img src="assets/snape.png" alt="cartoon of Severus Snape" class="wizard" id="snape">`;
+      fighterSection.innerHTML += `<img src="assets/snape.png" alt="cartoon of Severus Snape">`;
       break;
     case 'voldemort':
-      fighterSection.innerHTML += `<img src="assets/voldemort.png" alt="cartoon of Lord Voldemort" class="wizard" id="voldemort">`;
+      fighterSection.innerHTML += `<img src="assets/voldemort.png" alt="cartoon of Lord Voldemort">`;
       break;
     case 'dumbledore':
-      fighterSection.innerHTML += `<img src="assets/dumbledore.png" alt="cartoon of Albus Dumbledore" class="wizard" id="dumbledore">`;
+      fighterSection.innerHTML += `<img src="assets/dumbledore.png" alt="cartoon of Albus Dumbledore">`;
       break;
   };
 };
