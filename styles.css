@@ -2,10 +2,9 @@
   font-family: 'DynaPuff', 'sans serif'  
   main background: #21D19F (mint)
   side panels background: #45B69C (keppel)
-  classic hover: #EEB868 (earth yellow)
-  wizard hover: #772D8B (eminence)
-  to use later: #FFEFD3 (papaya whip)
-
+  classic hover state: #EEB868 (earth yellow)
+  wizard hover state: #772D8B (eminence)
+  result announcement: #FFEFD3 (papaya whip)
 */
   
 /* GENERAL */
@@ -24,15 +23,19 @@ html {
 body {
   height: 100%;
   width: 100%;
-  display: flex;
   font-family: 'DynaPuff', 'sans serif';
+  display: flex;
 }
 
 html, body {
   margin: 0;
 }
 
-.panel, .view, .game-box {
+.classic, .wizard, .classic-icons, .wizard-icons, button {
+  cursor: pointer;
+}
+
+.panel, .view, .game-box, .game-boxes-container, .icons {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -50,10 +53,6 @@ h2 {
 h3 {
   font-size: 4rem;
   font-weight: 400;
-}
-
-.classic, .wizard, .classic-icons, .wizard-icons, button {
-  cursor: pointer;
 }
 
 /* MAIN SECTION */
@@ -78,24 +77,37 @@ h1 {
   margin: 0;
   text-align: center;
 }
+ 
+/* CHOOSE GAME VIEW */
 
-.game-boxes {
+.game-boxes-container {
   height: 100%;
   width: 100%;
-  display: flex;
-  flex-direction: column;
   justify-content: space-evenly;
-  align-items: center;
 }
 
 .game-box {
   background-color: #45B69C;
-  border: dotted white;
-  border-radius: 40px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   text-align: center;
+}
+
+button {
+  height: 10%;
+  width: 80%;font-family: 'DynaPuff', 'sans serif';
+  background-color: #21D19F;
+  color: white;
+  margin: 2.5em;
+  font-weight: 400;
+  font-size: 2.25rem;
+}
+
+.game-box, button {
+  border: dotted #FFEFD3 ;
+  border-radius: 40px;
+}
+
+.box-header {
+  margin: 3rem;
 }
 
 ul {
@@ -106,18 +118,6 @@ ul {
 
 li {
   font-size: 2.3rem; 
-}
-
-.icons {
-  height: 70%;
-  width: 100%;
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-}
-
-img {
-  width: 25%;
 }
 
 .classic-box {
@@ -142,18 +142,27 @@ img {
   background-color: #772D8B;
 }
 
-.wizards {
+/* CHOOSE FIGHTER VIEW */
+
+.icons {
+  height: 70%;
+  width: 100%;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.wizard-icons {
   height: 100%;
   width: 75%;
   flex-wrap: wrap;
 }
 
-.wizard-icon {
-  margin: 1em 0.5em;
+img {
+  width: 25%;
 }
 
-.box-header {
-  margin: 3rem;
+.wizard-icon {
+  margin: 1em 0.5em;
 }
 
 .wizard-icon, .classic-icon {
@@ -162,6 +171,11 @@ img {
 
 .classic-icon:hover, .wizard-icon:hover {
   width: 28%;
+}
+
+/* RESULT VIEW */
+.result {
+  color: #FFEFD3;
 }
 
 /* SIDE PANELS */
@@ -181,27 +195,10 @@ img {
   margin: 0;
 }
 
-button {
-  height: 10%;
-  width: 80%;font-family: 'DynaPuff', 'sans serif';
-  background-color: #21D19F;
-  border: dotted white;
-  color: white;
-  border-radius: 40px;
-  margin: 2.5em;
-  font-weight: 400;
-  font-size: 2.25rem;
-}
 
-.result {
-  color: #FFEFD3;
-}
 
 /* HIDDEN */
 
 .hidden {
   display: none;
 }
-
-/* ANIMATIONS */
-
