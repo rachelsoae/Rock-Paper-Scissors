@@ -52,7 +52,7 @@ h3 {
   font-weight: 400;
 }
 
-.classic, .variation, .icons, button {
+.classic, .wizard, .classic-icons, .wizard-icons, button {
   cursor: pointer;
 }
 
@@ -111,7 +111,6 @@ li {
 .icons {
   height: 70%;
   width: 100%;
-  /* margin: 1em; */
   display: flex;
   justify-content: space-evenly;
   align-items: center;

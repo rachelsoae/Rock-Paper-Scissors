@@ -18,13 +18,13 @@ var fighterOptions = {
 // DOM VARIABLES
 chooseGameView = document.querySelector('.choose-game-view');
 classicView = document.querySelector('.choose-fighter-classic');
-variationView = document.querySelector('.choose-fighter-variation');
+wizardView = document.querySelector('.choose-fighter-wizard');
 resultView = document.querySelector('.result-view');
 classicButton = document.querySelector('.classic-button');
 wizardButton = document.querySelector('.wizard-button');
 gameBoxesContainer = document.querySelector('.game-boxes');
 classicFighterContainer = document.querySelector('.classic-icons');
-variationFighterContainer = document.querySelector('.variation-icons')
+wizardFighterContainer = document.querySelector('.wizard-icons')
 player1Icon = document.querySelector('.player1-icon');
 player1Name = document.querySelector('.player1-name');
 player1Wins = document.querySelector('.player1-wins');
@@ -48,8 +48,8 @@ window.addEventListener('load', function() {
 gameBoxesContainer.addEventListener('click', function(event) {
   if (event.target.classList.contains('classic')) {
     game = createGame('classic', user, computer);
-  } else if (event.target.classList.contains('variation')) {
-    game = createGame('variation', user, computer);
+  } else if (event.target.classList.contains('wizard')) {
+    game = createGame('wizard', user, computer);
   }
 
   displayGame(game);
@@ -62,7 +62,7 @@ classicFighterContainer.addEventListener('click', function(event) {
   updateFighters(game, event.target);
 });
 
-variationFighterContainer.addEventListener('click', function(event) { 
+wizardFighterContainer.addEventListener('click', function(event) { 
   updateFighters(game, event.target);
 });
 
@@ -158,17 +158,25 @@ function displayWins(player1, player2) {
   player2Wins.innerText = player2.wins;
 };
 
+function displayGame(game) {
+  if (game.type === 'classic') {
+    displayClassicView();
+  } else {
+    displayVariationView();
+  };
+};
+
 function displayClassicView() {
   show(classicView);
   show(classicButton);
   hide(wizardButton);
   hide(chooseGameView);
-  hide(variationView);
+  hide(wizardView);
   hide(resultView);
 };
 
 function displayVariationView() {
-  show(variationView);
+  show(wizardView);
   show(wizardButton);
   hide(classicButton);
   hide(chooseGameView);
@@ -181,7 +189,7 @@ function displayChooseGameView() {
   hide(classicButton);
   hide(wizardButton);
   hide(classicView);
-  hide(variationView);
+  hide(wizardView);
   hide(resultView);
 };
 
@@ -189,7 +197,7 @@ function displayResult(game) {
   show(resultView);
   hide(chooseGameView);
   hide(classicView);
-  hide(variationView);
+  hide(wizardView);
   if (game.type === 'classic') {
     show(classicButton);
     hide(wizardButton);
@@ -200,14 +208,6 @@ function displayResult(game) {
   displayFighter(fighter1);
   displayFighter(fighter2); 
   setTimeout(reset, 1250, game);
-};
-
-function displayGame(game) {
-  if (game.type === 'classic') {
-    displayClassicView();
-  } else {
-    displayVariationView();
-  };
 };
 
 function displayFighter(fighter) {
