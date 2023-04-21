@@ -11,7 +11,7 @@
 /* GENERAL */
 
 * {
-  /* border: 2px solid rgb(0, 166, 255); */
+  /* border: 1px solid rgb(0, 166, 255); */
   color: white;
 }
 
@@ -54,10 +54,6 @@ h3 {
 
 .classic, .variation, .icons, button {
   cursor: pointer;
-}
-
-.classic:hover, .variation:hover, .icons:hover {
-  
 }
 
 /* MAIN SECTION */
@@ -115,6 +111,7 @@ li {
 .icons {
   height: 70%;
   width: 100%;
+  /* margin: 1em; */
   display: flex;
   justify-content: space-evenly;
   align-items: center;
@@ -135,7 +132,7 @@ img {
 }
 
 .classic-box, .wizard-box, button {
-  transition: background-color 250ms;
+  transition: background-color 200ms;
 }
 
 .classic-box:hover, .classic-button:hover {
@@ -147,17 +144,25 @@ img {
 }
 
 .wizards {
+  height: 100%;
   width: 75%;
   flex-wrap: wrap;
 }
 
-.wizard {
-  width: 25%;
+.wizard-icon {
   margin: 1em 0.5em;
 }
 
 .box-header {
   margin: 3rem;
+}
+
+.wizard-icon, .classic-icon {
+  transition: width 150ms;
+}
+
+.classic-icon:hover, .wizard-icon:hover {
+  width: 28%;
 }
 
 /* SIDE PANELS */

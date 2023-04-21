@@ -213,28 +213,28 @@ function displayGame(game) {
 function displayFighter(fighter) {
   switch (fighter) {
     case 'rock':
-      fighterSection.innerHTML += `<img src="assets/happy-rocks.png" alt="a big and small rock sitting in a tuft of grass with happy smiling faces" class="rock">`;
+      fighterSection.innerHTML += `<img src="assets/happy-rocks.png" alt="a cartoon big and small rock sitting in a tuft of grass with happy smiling faces">`;
       break;
     case 'paper':
-      fighterSection.innerHTML += `<img src="assets/happy-paper.png" alt="a lined piece of paper with a happy smiling face" class="paper">`;
+      fighterSection.innerHTML += `<img src="assets/happy-paper.png" alt="a cartoon lined piece of paper with a happy smiling face">`;
       break;
     case 'scissors':
-      fighterSection.innerHTML += `<img src="assets/happy-scissors.png" alt="a pair of scissors" class="scissors">`;
+      fighterSection.innerHTML += `<img src="assets/happy-scissors.png" alt="a pair of cartoon scissors">`;
       break;
     case 'harry':
-      fighterSection.innerHTML += `<img src="assets/harry.png" alt="cartoon of Harry Potter" class="wizard" id="harry">`;
+      fighterSection.innerHTML += `<img src="assets/harry.png" alt="cartoon of Harry Potter">`;
       break;
     case 'malfoy':
-      fighterSection.innerHTML += `<img src="assets/malfoy.png" alt="cartoon of Draco Malfoy" class="wizard" id="malfoy">`;
+      fighterSection.innerHTML += `<img src="assets/malfoy.png" alt="cartoon of Draco Malfoy">`;
       break;
     case 'snape':
-      fighterSection.innerHTML += `<img src="assets/snape.png" alt="cartoon of Severus Snape" class="wizard" id="snape">`;
+      fighterSection.innerHTML += `<img src="assets/snape.png" alt="cartoon of Severus Snape">`;
       break;
     case 'voldemort':
-      fighterSection.innerHTML += `<img src="assets/voldemort.png" alt="cartoon of Lord Voldemort" class="wizard" id="voldemort">`;
+      fighterSection.innerHTML += `<img src="assets/voldemort.png" alt="cartoon of Lord Voldemort">`;
       break;
     case 'dumbledore':
-      fighterSection.innerHTML += `<img src="assets/dumbledore.png" alt="cartoon of Albus Dumbledore" class="wizard" id="dumbledore">`;
+      fighterSection.innerHTML += `<img src="assets/dumbledore.png" alt="cartoon of Albus Dumbledore">`;
       break;
   };
 };
