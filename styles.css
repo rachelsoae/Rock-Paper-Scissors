@@ -2,8 +2,10 @@
   font-family: 'DynaPuff', 'sans serif'  
   main background: #21D19F (mint)
   side panels background: #45B69C (keppel)
-  button: #EEB868 (earth yellow)
+  classic hover: #EEB868 (earth yellow)
+  wizard hover: #772D8B (eminence)
   to use later: #FFEFD3 (papaya whip)
+
 */
   
 /* GENERAL */
@@ -54,6 +56,10 @@ h3 {
   cursor: pointer;
 }
 
+.classic:hover, .variation:hover, .icons:hover {
+  
+}
+
 /* MAIN SECTION */
 
 main {
@@ -96,10 +102,6 @@ h1 {
   text-align: center;
 }
 
-.game-box:hover {
-  background-color: #EEB868;
-}
-
 ul {
   list-style-type: none;
   padding: 0;
@@ -130,6 +132,18 @@ img {
 .wizard-box {
   height: 45%;
   width: 50%;
+}
+
+.classic-box, .wizard-box, button {
+  transition: background-color 250ms;
+}
+
+.classic-box:hover, .classic-button:hover {
+  background-color: #EEB868;
+}
+
+.wizard-box:hover, .wizard-button:hover {
+  background-color: #772D8B;
 }
 
 .wizards {
@@ -168,15 +182,15 @@ button {
   width: 80%;font-family: 'DynaPuff', 'sans serif';
   background-color: #21D19F;
   border: dotted white;
+  color: white;
   border-radius: 40px;
   margin: 2.5em;
   font-weight: 400;
   font-size: 2.25rem;
 }
 
-button:hover {
-  background-color: #EEB868;
-  color: white;
+.result {
+  color: #FFEFD3;
 }
 
 /* HIDDEN */
@@ -184,3 +198,6 @@ button:hover {
 .hidden {
   display: none;
 }
+
+/* ANIMATIONS */
+

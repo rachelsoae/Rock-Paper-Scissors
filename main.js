@@ -20,7 +20,8 @@ chooseGameView = document.querySelector('.choose-game-view');
 classicView = document.querySelector('.choose-fighter-classic');
 variationView = document.querySelector('.choose-fighter-variation');
 resultView = document.querySelector('.result-view');
-button = document.querySelector('button');
+classicButton = document.querySelector('.classic-button');
+wizardButton = document.querySelector('.wizard-button');
 gameBoxesContainer = document.querySelector('.game-boxes');
 classicFighterContainer = document.querySelector('.classic-icons');
 variationFighterContainer = document.querySelector('.variation-icons')
@@ -54,7 +55,8 @@ gameBoxesContainer.addEventListener('click', function(event) {
   displayGame(game);
 });
 
-button.addEventListener('click', displayChooseGameView);
+classicButton.addEventListener('click', displayChooseGameView);
+wizardButton.addEventListener('click', displayChooseGameView);
 
 classicFighterContainer.addEventListener('click', function(event) { 
   updateFighters(game, event.target);
@@ -158,7 +160,8 @@ function displayWins(player1, player2) {
 
 function displayClassicView() {
   show(classicView);
-  show(button);
+  show(classicButton);
+  hide(wizardButton);
   hide(chooseGameView);
   hide(variationView);
   hide(resultView);
@@ -166,7 +169,8 @@ function displayClassicView() {
 
 function displayVariationView() {
   show(variationView);
-  show(button);
+  show(wizardButton);
+  hide(classicButton);
   hide(chooseGameView);
   hide(classicView);
   hide(resultView);
@@ -174,7 +178,8 @@ function displayVariationView() {
 
 function displayChooseGameView() {
   show(chooseGameView);
-  hide(button);
+  hide(classicButton);
+  hide(wizardButton);
   hide(classicView);
   hide(variationView);
   hide(resultView);
@@ -182,10 +187,16 @@ function displayChooseGameView() {
 
 function displayResult(game) {
   show(resultView);
-  show(button);
   hide(chooseGameView);
   hide(classicView);
   hide(variationView);
+  if (game.type === 'classic') {
+    show(classicButton);
+    hide(wizardButton);
+  } else {
+    show(wizardButton);
+    hide(classicButton);
+  }
   displayFighter(fighter1);
   displayFighter(fighter2); 
   setTimeout(reset, 1250, game);
