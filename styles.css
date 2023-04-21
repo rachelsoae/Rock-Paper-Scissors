@@ -3,13 +3,8 @@
   main background: #21D19F (mint)
   side panels background: #45B69C (keppel)
   button: #EEB868 (earth yellow)
-  Harry: 👦🏻
-  Malfoy: 👦🏼
-  Snape: 👩🏻
-  Dumbledore: 🧙🏻‍♂️
-  Voldemort: 👩🏻‍🦲
 */
-
+  
 /* GENERAL */
 
 * {
@@ -32,7 +27,6 @@ body {
 
 html, body {
   margin: 0;
-  padding: 0;
 }
 
 .panel, .view, .game-box {

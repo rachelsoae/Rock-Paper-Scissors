@@ -118,7 +118,7 @@ function detectDraw(game) {
 function determineWinner(game) {
   var winner;
   
-  if ((fighter2 === fighterOptions[fighter1][0]) || (fighter2 === fighterOptions[fighter1][1])) {
+  if ((fighter2 === fighterOptions[fighter1]) || (fighter2 === fighterOptions[fighter1][0]) || (fighter2 === fighterOptions[fighter1][1])) {
     winner = game.players[0]; 
   } else {
     winner = game.players[1];
