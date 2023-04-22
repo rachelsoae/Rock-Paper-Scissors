@@ -225,19 +225,6 @@ function displayResult(game) {
   hide(chooseGameView);
   hide(classicView);
   hide(wizardView);
-
-  // if (game.type === 'classic') {
-  //   show(classicGameButton);
-  //   show(classicResetButton);
-  //   hide(wizardGameButton);
-  //   hide(wizardResetButton);
-  // } else {
-  //   show(wizardGameButton);
-  //   show(wizardResetButton);
-  //   hide(classicGameButton);
-  //   hide(classicResetButton);
-  // };
-
   displayFighter(fighter1);
   displayFighter(fighter2); 
   setTimeout(reset, 1250, game);
@@ -273,11 +260,11 @@ function displayFighter(fighter) {
 };
 
 function announceDraw() {
-  result.innerText = `It's a draw!`;
+  result.innerText = `🤝 It's a draw! 🤝`;
 };
 
 function announceWinner(player) {
-  result.innerText = `${player.name} wins this round!`;
+  result.innerText = `${player.token} ${player.name} wins this round! ${player.token}`;
   displayWins(user, computer);
 };
 
