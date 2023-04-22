@@ -20,8 +20,8 @@ chooseGameView = document.querySelector('.choose-game-view');
 classicView = document.querySelector('.choose-fighter-classic');
 wizardView = document.querySelector('.choose-fighter-wizard');
 resultView = document.querySelector('.result-view');
-classicButton = document.querySelector('.classic-button');
-wizardButton = document.querySelector('.wizard-button');
+classicGameButton = document.querySelector('.classic-game-button');
+wizardGameButton = document.querySelector('.wizard-game-button');
 gameBoxesContainer = document.querySelector('.game-boxes-container');
 classicFighterContainer = document.querySelector('.classic-icons');
 wizardFighterContainer = document.querySelector('.wizard-icons')
@@ -33,9 +33,8 @@ player2Name = document.querySelector('.player2-name');
 player2Wins = document.querySelector('.player2-wins');
 result = document.querySelector('.result');
 fighterSection = document.querySelector('.fighters');
-rockImg = document.querySelector('.rock');
-paperImg = document.querySelector('.paper');
-scissorsImg = document.querySelector('.scissors');
+classicResetButton = document.querySelector('.classic-reset-button');
+wizardResetButton = document.querySelector('.wizard-reset-button');
 
 // EVENT LISTENERS
 window.addEventListener('load', function() {
@@ -55,9 +54,6 @@ gameBoxesContainer.addEventListener('click', function(event) {
   displayGame(game);
 });
 
-classicButton.addEventListener('click', displayChooseGameView);
-wizardButton.addEventListener('click', displayChooseGameView);
-
 classicFighterContainer.addEventListener('click', function(event) { 
   updateFighters(game, event.target);
 });
@@ -65,6 +61,17 @@ classicFighterContainer.addEventListener('click', function(event) {
 wizardFighterContainer.addEventListener('click', function(event) { 
   updateFighters(game, event.target);
 });
+
+classicResetButton.addEventListener('click', function() {
+  resetWins(user, computer);
+});
+
+wizardResetButton.addEventListener('click', function() {
+  resetWins(user, computer);
+});
+
+classicGameButton.addEventListener('click', displayChooseGameView);
+wizardGameButton.addEventListener('click', displayChooseGameView);
 
 // FUNCTIONS - DATA MODEL
 function createPlayer(name, token, wins = 0) {
@@ -136,6 +143,22 @@ function winFight(player) {
   return player;
 }
 
+function resetWins(player1, player2) {
+  player1.wins = 0;
+  player2.wins = 0;
+  displayWins(player1, player2);
+}
+
+function displayResetButton(player1, player2) {
+  if (player1.wins && player2.wins) {
+    show(classicResetButton);
+    show(wizardResetButton);
+  } else {
+    hide(classicResetButton);
+    hide(wizardResetButton);
+  }
+}
+
 // FUNCTIONS - DOM
 function show(element) {
   element.classList.remove('hidden');
@@ -168,8 +191,9 @@ function displayGame(game) {
 
 function displayClassicView() {
   show(classicView);
-  show(classicButton);
-  hide(wizardButton);
+  show(classicGameButton);
+  show(classicResetButton);
+  hide(wizardGameButton);
   hide(chooseGameView);
   hide(wizardView);
   hide(resultView);
@@ -177,8 +201,9 @@ function displayClassicView() {
 
 function displayVariationView() {
   show(wizardView);
-  show(wizardButton);
-  hide(classicButton);
+  show(wizardGameButton);
+  show(wizardResetButton);
+  hide(classicGameButton);
   hide(chooseGameView);
   hide(classicView);
   hide(resultView);
@@ -186,8 +211,10 @@ function displayVariationView() {
 
 function displayChooseGameView() {
   show(chooseGameView);
-  hide(classicButton);
-  hide(wizardButton);
+  hide(classicGameButton);
+  hide(wizardGameButton);
+  hide(classicResetButton);
+  hide(wizardResetButton);
   hide(classicView);
   hide(wizardView);
   hide(resultView);
@@ -198,13 +225,19 @@ function displayResult(game) {
   hide(chooseGameView);
   hide(classicView);
   hide(wizardView);
-  if (game.type === 'classic') {
-    show(classicButton);
-    hide(wizardButton);
-  } else {
-    show(wizardButton);
-    hide(classicButton);
-  }
+
+  // if (game.type === 'classic') {
+  //   show(classicGameButton);
+  //   show(classicResetButton);
+  //   hide(wizardGameButton);
+  //   hide(wizardResetButton);
+  // } else {
+  //   show(wizardGameButton);
+  //   show(wizardResetButton);
+  //   hide(classicGameButton);
+  //   hide(classicResetButton);
+  // };
+
   displayFighter(fighter1);
   displayFighter(fighter2); 
   setTimeout(reset, 1250, game);
