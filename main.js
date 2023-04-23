@@ -20,6 +20,7 @@ loginButton = document.querySelector('.login-button');
 nameInput = document.querySelector('input');
 iconInput = document.querySelector('select');
 winLabels = document.querySelectorAll('.wins-label');
+loginView = document.querySelector('form')
 player1Icon = document.querySelector('.player1-icon');
 player1Name = document.querySelector('.player1-name');
 player1Wins = document.querySelector('.player1-wins');
@@ -210,6 +211,7 @@ function displayClassicView() {
   hide(chooseGameView);
   hide(wizardView);
   hide(resultView);
+  hide(loginView);
 };
 
 function displayVariationView() {
@@ -220,6 +222,7 @@ function displayVariationView() {
   hide(chooseGameView);
   hide(classicView);
   hide(resultView);
+  hide(loginView);
 };
 
 function displayChooseGameView() {
@@ -231,6 +234,7 @@ function displayChooseGameView() {
   hide(classicView);
   hide(wizardView);
   hide(resultView);
+  hide(loginView);
 };
 
 function displayResult(game) {
@@ -238,6 +242,7 @@ function displayResult(game) {
   hide(chooseGameView);
   hide(classicView);
   hide(wizardView);
+  hide(loginView);
   displayFighter(fighter1);
   displayFighter(fighter2); 
   setTimeout(reset, 1250, game);
