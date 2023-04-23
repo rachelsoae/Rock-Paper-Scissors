@@ -16,25 +16,26 @@ var fighterOptions = {
 };
 
 // DOM VARIABLES
-chooseGameView = document.querySelector('.choose-game-view');
-classicView = document.querySelector('.choose-fighter-classic');
-wizardView = document.querySelector('.choose-fighter-wizard');
-resultView = document.querySelector('.result-view');
-classicGameButton = document.querySelector('.classic-game-button');
-wizardGameButton = document.querySelector('.wizard-game-button');
-gameBoxesContainer = document.querySelector('.game-boxes-container');
-classicFighterContainer = document.querySelector('.classic-icons');
-wizardFighterContainer = document.querySelector('.wizard-icons')
 player1Icon = document.querySelector('.player1-icon');
 player1Name = document.querySelector('.player1-name');
 player1Wins = document.querySelector('.player1-wins');
 player2Icon = document.querySelector('.player2-icon');
 player2Name = document.querySelector('.player2-name');
 player2Wins = document.querySelector('.player2-wins');
-result = document.querySelector('.result');
-fighterSection = document.querySelector('.fighters');
+classicGameButton = document.querySelector('.classic-game-button');
+wizardGameButton = document.querySelector('.wizard-game-button');
 classicResetButton = document.querySelector('.classic-reset-button');
 wizardResetButton = document.querySelector('.wizard-reset-button');
+chooseGameView = document.querySelector('.choose-game-view');
+classicView = document.querySelector('.choose-fighter-classic');
+classicBox = document.querySelector('.classic-box');
+wizardBox = document.querySelector('.wizard-box');
+wizardView = document.querySelector('.choose-fighter-wizard');
+fighterSection = document.querySelector('.fighters');
+resultView = document.querySelector('.result-view');
+classicFighterContainer = document.querySelector('.classic-icons');
+wizardFighterContainer = document.querySelector('.wizard-icons')
+result = document.querySelector('.result');
 
 // EVENT LISTENERS
 window.addEventListener('load', function() {
@@ -44,13 +45,13 @@ window.addEventListener('load', function() {
   displayWins(user, computer);
 });
 
-gameBoxesContainer.addEventListener('click', function(event) {
-  if (event.target.classList.contains('classic')) {
-    game = createGame('classic', user, computer);
-  } else if (event.target.classList.contains('wizard')) {
-    game = createGame('wizard', user, computer);
-  }
+classicBox.addEventListener('click', function() {
+  game = createGame('classic', user, computer);
+  displayGame(game);
+});
 
+wizardBox.addEventListener('click', function() {
+  game = createGame('wizard', user, computer);
   displayGame(game);
 });
 
