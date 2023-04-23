@@ -41,7 +41,7 @@ html, body {
 }
 
 .name-input, .icon-input {
-  padding: 0.5em;
+  padding: 1em;
 }
 
 .login-button-container {
@@ -200,7 +200,7 @@ button {
 }
 
 .classic-box, .wizard-box, button {
-  transition: background-color 200ms;
+  transition: background-color 175ms;
 }
 
 .box-header {
@@ -224,7 +224,7 @@ ul {
 }
 
 .wizard-icon, .classic-icon {
-  transition: width 200ms;
+  transition: width 175ms;
 }
 
 .classic-icon:hover, .wizard-icon:hover {

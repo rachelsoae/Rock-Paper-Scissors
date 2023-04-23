@@ -45,13 +45,10 @@ result = document.querySelector('.result');
 
 // EVENT LISTENERS
 
-loginButton.addEventListener('click', function(event) {
-  event.preventDefault();
+loginButton.addEventListener('click', function() {
   user = createPlayer(`${nameInput.value}`, `${iconInput.value}`);
   computer = createPlayer('Computer', '🤖')
-  displayPlayers(user, computer);
-  displayWins(user, computer);
-  displayChooseGameView();
+  login();
 });
 
 classicBox.addEventListener('click', function() {
@@ -170,6 +167,12 @@ function displayResetButton(player1, player2) {
 }
 
 // FUNCTIONS - DOM
+function login() {
+  displayPlayers(user, computer);
+  displayWins(user, computer);
+  displayChooseGameView();
+}
+
 function show(element) {
   element.classList.remove('hidden');
 };
