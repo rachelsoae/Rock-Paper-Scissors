@@ -35,21 +35,34 @@ html, body {
   cursor: pointer;
 }
 
-.panel, .view, .game-box, .game-boxes-container, .icons-container {
+.panel, .view, .game-box, .game-boxes-container, .icons-container, .name-input, .icon-input {
   display: flex;
-  flex-direction: column;
   align-items: center;
 }
 
-.panel {
+.name-input, .icon-input {
+  padding: 0.5em;
+}
+
+.login-button-container {
   height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
 .icons-container {
   height: 70%;
   width: 100%;
-  flex-direction: row;
   justify-content: space-evenly;
+}
+
+.panel, .view, .game-box, .game-boxes-container, form {
+  flex-direction: column;
+}
+
+.panel {
+  height: 100%;
 }
 
 img {
@@ -62,12 +75,12 @@ h1 {
   font-size: 8.5rem;
 }
 
-h2 {
+h2, label {
   font-size: 5rem;
   font-weight: 500;
 }
 
-h3 {
+h3, input, select {
   font-size: 4rem;
   font-weight: 400;
 }
@@ -88,6 +101,25 @@ main {
   width: 100%;
 }
 
+form {
+  width: 55%;
+  margin: 3em;
+  display: flex;
+  justify-content: space-between;
+}
+
+input {
+  width: 40%;
+  font-family: 'DynaPuff', 'sans serif';
+  color: #45B69C;
+  accent-color: #FFEFD3;
+}
+
+input, select {
+  height: 85%;
+  margin-left: 1em;
+}
+
 .view-header {
   height: 10%;
   width: 100%;
@@ -95,8 +127,6 @@ main {
   text-align: center;
   color: #FFEFD3;
 }
-
-/* SIDE PANELS */
 
 .side-panel {
   width: 20%;
@@ -114,20 +144,30 @@ main {
 }
 
 button {
-  height: 10%;
-  width: 80%;font-family: 'DynaPuff', 'sans serif';
-  background-color: #21D19F;
+  font-family: 'DynaPuff', 'sans serif';
   color: white;
   margin: 2.5em;
   font-weight: 400;
-  font-size: 2.25rem;
 }
-
-/* CHOOSE GAME VIEW */
 
 .game-box, button {
   border: dotted #FFEFD3 ;
   border-radius: 40px;
+}
+
+.classic-button, .wizard-button {
+  height: 10%;
+  width: 80%;
+  background-color: #21D19F;
+  font-size: 2.25rem;
+}
+
+.login-button {
+  width: 40%;
+  margin: 1em;
+  background-color: #45B69C;
+  font-size: 3rem;
+  padding: 0.5em;
 }
 
 .game-boxes-container {
@@ -151,7 +191,7 @@ button {
   width: 50%;
 }
 
-.classic-box:hover, .classic-button:hover {
+.classic-box:hover, .classic-button:hover, .login-button:hover {
   background-color: #EEB868;
 }
 

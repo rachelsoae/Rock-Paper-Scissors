@@ -16,6 +16,10 @@ var fighterOptions = {
 };
 
 // DOM VARIABLES
+loginButton = document.querySelector('.login-button');
+nameInput = document.querySelector('input');
+iconInput = document.querySelector('select');
+winLabels = document.querySelectorAll('.wins-label');
 player1Icon = document.querySelector('.player1-icon');
 player1Name = document.querySelector('.player1-name');
 player1Wins = document.querySelector('.player1-wins');
@@ -37,12 +41,16 @@ classicFighterContainer = document.querySelector('.classic-icons');
 wizardFighterContainer = document.querySelector('.wizard-icons')
 result = document.querySelector('.result');
 
+
 // EVENT LISTENERS
-window.addEventListener('load', function() {
-  user = createPlayer('Player', '😄');
+
+loginButton.addEventListener('click', function(event) {
+  event.preventDefault();
+  user = createPlayer(`${nameInput.value}`, `${iconInput.value}`);
   computer = createPlayer('Computer', '🤖')
   displayPlayers(user, computer);
   displayWins(user, computer);
+  displayChooseGameView();
 });
 
 classicBox.addEventListener('click', function() {
@@ -178,6 +186,10 @@ function displayPlayers(player1, player2) {
 };
 
 function displayWins(player1, player2) {
+  for (var i = 0; i < winLabels.length; i++) {
+    show(winLabels[i]);
+  }
+
   player1Wins.innerText = player1.wins;
   player2Wins.innerText = player2.wins;
 };
