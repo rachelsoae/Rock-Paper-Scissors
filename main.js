@@ -174,6 +174,12 @@ function resetWins(player1, player2) {
   displayWins(player1, player2);
 }
 
+function resetFighters(game) {
+  game.players[0].fighter = null;
+  game.players[1].fighter = null;
+  return game;
+}
+
 // FUNCTIONS - DOM
 function show(element) {
   element.classList.remove('hidden');
@@ -305,5 +311,6 @@ function announceWinner(player) {
 
 function reset(game) {
   fighterSection.innerHTML = '';
+  resetFighters(game);
   displayGame(game);
 };
