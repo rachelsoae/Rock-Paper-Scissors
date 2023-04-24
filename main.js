@@ -246,6 +246,10 @@ function displayResult(game) {
   hide(classicView);
   hide(wizardView);
   hide(loginView);
+  hide(classicGameButton);
+  hide(wizardGameButton);
+  hide(classicResetButton);
+  hide(wizardResetButton);
   displayFighter(fighter1);
   displayFighter(fighter2); 
   setTimeout(reset, 1250, game);
