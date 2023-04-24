@@ -40,23 +40,6 @@ html, body {
   align-items: center;
 }
 
-.name-input, .icon-input {
-  padding: 1em;
-}
-
-.login-button-container {
-  height: 100%;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-}
-
-.icons-container {
-  height: 70%;
-  width: 100%;
-  justify-content: space-evenly;
-}
-
 .panel, .view, .game-box, .game-boxes-container, form {
   flex-direction: column;
 }
@@ -89,7 +72,7 @@ li {
   font-size: 2.3rem; 
 }
 
-/* MAIN SECTION */
+/* VIEWS & BUTTONS */
 
 main {
   width: 60%;
@@ -108,16 +91,60 @@ form {
   justify-content: space-between;
 }
 
+.name-input, .icon-input {
+  padding: 1em;
+}
+
+input, select {
+  height: 90%;
+  margin-left: 1em;
+  border-width: 0;
+  border-radius: 20px;
+  text-align: center;
+}
+
 input {
   width: 40%;
   font-family: 'DynaPuff', 'sans serif';
   color: #45B69C;
-  accent-color: #FFEFD3;
 }
 
-input, select {
-  height: 85%;
-  margin-left: 1em;
+select {
+  width: 12%;
+}
+
+button {
+  border-radius: 32px;
+  margin: 2.5em;
+  font-family: 'DynaPuff', 'sans serif';
+  font-weight: 400;
+  color: white;
+}
+
+button, .game-box {
+  border: dotted #FFEFD3 ;
+}
+
+.login-button-container {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.login-button {
+  width: 40%;
+  padding: 0.75em;
+  margin: 1em;
+  background-color: #45B69C;
+  font-size: 3rem;
+}
+
+.classic-button, .wizard-button {
+  height: 10%;
+  width: 80%;
+  background-color: #21D19F;
+  font-size: 2.25rem;
 }
 
 .view-header {
@@ -143,33 +170,6 @@ input, select {
   margin: 0;
 }
 
-button {
-  font-family: 'DynaPuff', 'sans serif';
-  color: white;
-  margin: 2.5em;
-  font-weight: 400;
-}
-
-.game-box, button {
-  border: dotted #FFEFD3 ;
-  border-radius: 40px;
-}
-
-.classic-button, .wizard-button {
-  height: 10%;
-  width: 80%;
-  background-color: #21D19F;
-  font-size: 2.25rem;
-}
-
-.login-button {
-  width: 40%;
-  margin: 1em;
-  background-color: #45B69C;
-  font-size: 3rem;
-  padding: 0.5em;
-}
-
 .game-boxes-container {
   height: 100%;
   width: 100%;
@@ -178,6 +178,7 @@ button {
 
 .game-box {
   background-color: #45B69C;
+  border-radius: 40px;
   text-align: center;
 }
 
@@ -211,6 +212,12 @@ ul {
   list-style-type: none;
   padding: 0;
   margin: 0;
+}
+
+.icons-container {
+  height: 70%;
+  width: 100%;
+  justify-content: space-evenly;
 }
 
 .wizard-icons {

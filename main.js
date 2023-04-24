@@ -167,12 +167,6 @@ function displayResetButton(player1, player2) {
 }
 
 // FUNCTIONS - DOM
-function login() {
-  displayPlayers(user, computer);
-  displayWins(user, computer);
-  displayChooseGameView();
-}
-
 function show(element) {
   element.classList.remove('hidden');
 };
@@ -180,6 +174,12 @@ function show(element) {
 function hide(element) {
   element.classList.add('hidden');
 };
+
+function login() {
+  displayPlayers(user, computer);
+  displayWins(user, computer);
+  displayChooseGameView();
+}
 
 function displayPlayers(player1, player2) {
   player1Icon.innerText = player1.token;
