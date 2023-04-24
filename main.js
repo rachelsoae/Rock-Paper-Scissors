@@ -90,15 +90,16 @@ function createPlayer(name, token, wins = 0) {
   return player;
 };
 
-function createGame(type, player1, player2) {
+function createGame(type, player1, player2, winners = []) {
   game = {
     type: type,
-    players: [player1, player2]
+    players: [player1, player2],
+    winners: winners
   };
   return game;
 };
 
-function getComputerFighter(game) {
+function getRandomFighter(game) {
   var fighters = Object.keys(fighterOptions);
 
   if (game.type === 'classic') {
@@ -113,7 +114,7 @@ function getComputerFighter(game) {
 
 function updateFighters(game, userSelection) {
   game.players[0].fighter = userSelection.id;
-  game.players[1].fighter = getComputerFighter(game);
+  game.players[1].fighter = getRandomFighter(game);
   fighter1 = game.players[0].fighter;
   fighter2 = game.players[1].fighter;
   detectDraw(game); 
@@ -123,6 +124,7 @@ function updateFighters(game, userSelection) {
 function detectDraw(game) {
   if (fighter1 === fighter2) {
     announceDraw();
+    game.winners.push('draw');
   } else {
     determineWinner(game);
   };
@@ -140,6 +142,7 @@ function determineWinner(game) {
     winner = game.players[1];
   };
 
+  game.winners.push(winner);
   winFight(winner);
   announceWinner(winner);
   return game;
