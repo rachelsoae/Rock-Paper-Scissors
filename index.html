@@ -15,7 +15,7 @@
       <h2 class="side-panel-header player1-name">
         <!-- Player 1 Name Goes Here -->
       </h2>
-      <h3>Wins: 
+      <h3 class="wins-label hidden">Wins: 
         <span class="player1-wins">
           <!-- Num Player 1 Wins Goes Here -->
         </span>
@@ -25,7 +25,26 @@
     </section>
     <main class="panel">
       <h1>Rock, Paper, Scissors</h1>
-      <div class="view choose-game-view"> 
+      <form>
+        <div class="name-input">
+          <label for="user-name">Your Name:</label>
+          <input type="text" name="user-name">
+        </div>
+        <div class="icon-input">
+          <label for="user-icon">Choose an Icon:</label>
+          <select name="user-icon">
+            <option value="😄">😄</option>
+            <option value="🐸">🐸</option>
+            <option value="☀️">☀️</option>
+            <option value="🐳">🐳</option>
+            <option value="🌸">🌸</option>
+          </select>
+        </div>
+        <div class="login-button-container">
+          <button type="button" class="login-button">Let's Play!</button>
+        </div>
+      </form>
+      <div class="view choose-game-view hidden"> 
         <h2 class="view-header">Choose Your Game!</h2>
         <div class="game-boxes-container">
           <section class="game-box classic-box classic">
@@ -82,7 +101,7 @@
       <h2 class="side-panel-header player2-name">
       <!-- Player 2 Name Goes Here -->
       </h2>
-      <h3>Wins: 
+      <h3 class="wins-label hidden">Wins: 
         <span class="player2-wins">
           <!-- Num Player 2 Wins Goes Here -->
         </span>
