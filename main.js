@@ -14,7 +14,7 @@ var fighterOptions = {
   snape: ['dumbledore', 'harry'],
   voldemort: ['snape', 'malfoy'],
   dumbledore: ['harry', 'voldemort']
-  };
+};
 
 // ~ * ~ DOM VARIABLES ~ * ~ //
 
@@ -100,12 +100,12 @@ function createGame(type, player1, player2, winners = []) {
   var gamePlayer1 = {
     ...player1,
     fighter: null
-  }
+  };
 
   var gamePlayer2 = {
     ... player2,
     fighter: null
-  }
+  };
   
   game = {
     type: type,
@@ -122,7 +122,7 @@ function updateFighters(game, userSelection) {
   fighter2 = game.players[1].fighter;
   detectDraw(game); 
   return game;
-}
+};
 
 function getRandomFighter(game) {
   var fighters = Object.keys(fighterOptions);
@@ -167,19 +167,19 @@ function determineWinner(game) {
 function increaseWins(player) {
   player.wins += 1;
   return player;
-}
+};
 
 function resetWins(player1, player2) {
   player1.wins = 0;
   player2.wins = 0;
   displayWins(player1, player2);
-}
+};
 
 function resetFighters(game) {
   game.players[0].fighter = null;
   game.players[1].fighter = null;
   return game;
-}
+};
 
 // ~ * ~ FUNCTIONS: DOM  ~ * ~ //
 function show(element) {
@@ -194,7 +194,7 @@ function login() {
   displayPlayers(user, computer);
   displayWins(user, computer);
   displayChooseGameView();
-}
+};
 
 function displayPlayers(player1, player2) {
   player1Icon.innerText = player1.token;
@@ -304,7 +304,7 @@ function announceWinner(player) {
 function displayWins(player1, player2) {
   for (var i = 0; i < winLabels.length; i++) {
     show(winLabels[i]);
-  }
+  };
 
   player1Wins.innerText = player1.wins;
   player2Wins.innerText = player2.wins;
