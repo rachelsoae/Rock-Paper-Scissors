@@ -18,7 +18,6 @@ html {
   height: 100vh;
   width: 100vw;
   font-size: 62.5%;
-  overflow: hidden;
 }
 
 body {
@@ -245,7 +244,7 @@ ul {
 
 /* LAPTOP - LARGE */
 
-@media screen and (max-width: 1440px) {
+@media screen and (max-width: 1600px) {
   h1 {
     font-size: 7rem;
   }
