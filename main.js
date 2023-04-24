@@ -1,21 +1,23 @@
-// DATA MODEL
+// ~ * ~ DATA MODEL ~ * ~ //
+
 var user;
 var computer;
 var game;
 var fighter1;
 var fighter2;
 var fighterOptions = {
-  rock: 'scissors',
-  paper: 'rock',
-  scissors: 'paper',
+  rock: ['scissors'], 
+  paper: ['rock'],
+  scissors: ['paper'],
   harry: ['voldemort', 'malfoy'],
   malfoy: ['dumbledore', 'snape'],
   snape: ['dumbledore', 'harry'],
   voldemort: ['snape', 'malfoy'],
   dumbledore: ['harry', 'voldemort']
-};
+  };
 
-// DOM VARIABLES
+// ~ * ~ DOM VARIABLES ~ * ~ //
+
 loginButton = document.querySelector('.login-button');
 nameInput = document.querySelector('input');
 iconInput = document.querySelector('select');
@@ -42,8 +44,7 @@ classicFighterContainer = document.querySelector('.classic-icons');
 wizardFighterContainer = document.querySelector('.wizard-icons')
 result = document.querySelector('.result');
 
-
-// EVENT LISTENERS
+// ~ * ~ EVENT LISTENERS ~ * ~ //
 
 loginButton.addEventListener('click', function() {
   user = createPlayer(`${nameInput.value}`, `${iconInput.value}`);
@@ -85,7 +86,7 @@ wizardGameButton.addEventListener('click', function() {
   displayChooseGameView(game);
 });
 
-// FUNCTIONS - DATA MODEL
+// ~ * ~ FUNCTIONS: DATA MODEL  ~ * ~ //
 function createPlayer(name, token, wins = 0) {
   var player = {
     name: name,
@@ -114,6 +115,15 @@ function createGame(type, player1, player2, winners = []) {
   return game;
 };
 
+function updateFighters(game, userSelection) {
+  game.players[0].fighter = userSelection.id;
+  game.players[1].fighter = getRandomFighter(game);
+  fighter1 = game.players[0].fighter;
+  fighter2 = game.players[1].fighter;
+  detectDraw(game); 
+  return game;
+}
+
 function getRandomFighter(game) {
   var fighters = Object.keys(fighterOptions);
 
@@ -126,15 +136,6 @@ function getRandomFighter(game) {
   var fighter = fighters[index];
   return fighter;
 };
-
-function updateFighters(game, userSelection) {
-  game.players[0].fighter = userSelection.id;
-  game.players[1].fighter = getRandomFighter(game);
-  fighter1 = game.players[0].fighter;
-  fighter2 = game.players[1].fighter;
-  detectDraw(game); 
-  return game;
-}
 
 function detectDraw(game) {
   if (fighter1 === fighter2) {
@@ -150,7 +151,7 @@ function detectDraw(game) {
 
 function determineWinner(game) {
   var winner;
-  
+
   if ((fighter2 === fighterOptions[fighter1]) || (fighter2 === fighterOptions[fighter1][0]) || (fighter2 === fighterOptions[fighter1][1])) {
     winner = user; 
   } else {
@@ -180,7 +181,7 @@ function resetFighters(game) {
   return game;
 }
 
-// FUNCTIONS - DOM
+// ~ * ~ FUNCTIONS: DOM  ~ * ~ //
 function show(element) {
   element.classList.remove('hidden');
 };
@@ -201,6 +202,20 @@ function displayPlayers(player1, player2) {
 
   player2Icon.innerText = player2.token;
   player2Name.innerText = player2.name;
+};
+
+function displayChooseGameView(game) {
+  game = null;
+  show(chooseGameView);
+  hide(classicGameButton);
+  hide(wizardGameButton);
+  hide(classicResetButton);
+  hide(wizardResetButton);
+  hide(classicView);
+  hide(wizardView);
+  hide(resultView);
+  hide(loginView);
+  return game;
 };
 
 function displayGame(game) {
@@ -233,20 +248,6 @@ function displayVariationView() {
   hide(loginView);
 };
 
-function displayChooseGameView(game) {
-  game = null;
-  show(chooseGameView);
-  hide(classicGameButton);
-  hide(wizardGameButton);
-  hide(classicResetButton);
-  hide(wizardResetButton);
-  hide(classicView);
-  hide(wizardView);
-  hide(resultView);
-  hide(loginView);
-  return game;
-};
-
 function displayResult(game) {
   show(resultView);
   hide(chooseGameView);
@@ -257,18 +258,9 @@ function displayResult(game) {
   hide(wizardGameButton);
   hide(classicResetButton);
   hide(wizardResetButton);
-  displayFighter(fighter1);
-  displayFighter(fighter2); 
+  displayFighter(game, fighter1);
+  displayFighter(game, fighter2); 
   setTimeout(reset, 1250, game);
-};
-
-function displayWins(player1, player2) {
-  for (var i = 0; i < winLabels.length; i++) {
-    show(winLabels[i]);
-  }
-
-  player1Wins.innerText = player1.wins;
-  player2Wins.innerText = player2.wins;
 };
 
 function displayFighter(fighter) {
@@ -307,6 +299,15 @@ function announceDraw() {
 function announceWinner(player) {
   result.innerText = `${player.token} ${player.name} wins this round! ${player.token}`;
   displayWins(user, computer);
+};
+
+function displayWins(player1, player2) {
+  for (var i = 0; i < winLabels.length; i++) {
+    show(winLabels[i]);
+  }
+
+  player1Wins.innerText = player1.wins;
+  player2Wins.innerText = player2.wins;
 };
 
 function reset(game) {
