@@ -143,12 +143,12 @@ function determineWinner(game) {
   };
 
   game.winners.push(winner);
-  winFight(winner);
+  increaseWins(winner);
   announceWinner(winner);
   return game;
 };
 
-function winFight(player) {
+function increaseWins(player) {
   player.wins += 1;
   return player;
 }
