@@ -56,6 +56,7 @@ img {
 
 h1 {
   font-size: 8.5rem;
+  text-align: center;
 }
 
 h2, label {
@@ -72,9 +73,10 @@ li {
   font-size: 2.3rem; 
 }
 
-/* VIEWS & BUTTONS */
+/* PRIMARY VIEW ELEMENTS */
 
 main {
+  height: 100%;
   width: 60%;
   background-color: #21D19F;
 }
@@ -83,6 +85,31 @@ main {
   height: 100%;
   width: 100%;
 }
+
+.view-header {
+  height: 10%;
+  width: 100%;
+  margin: 0;
+  text-align: center;
+  color: #FFEFD3;
+}
+
+.side-panel {
+  width: 20%;
+  background-color: #45B69C;
+}
+
+.side-panel-icon {
+  font-size: 6rem;
+  margin-top: 3em;
+  margin-bottom: 0;
+}
+
+.side-panel-header {
+  margin: 0;
+}
+
+/* SECONDARY VIEW ELEMENTS */
 
 form {
   width: 55%;
@@ -145,29 +172,6 @@ button, .game-box {
   width: 80%;
   background-color: #21D19F;
   font-size: 2.25rem;
-}
-
-.view-header {
-  height: 10%;
-  width: 100%;
-  margin: 0;
-  text-align: center;
-  color: #FFEFD3;
-}
-
-.side-panel {
-  width: 20%;
-  background-color: #45B69C;
-}
-
-.side-panel-icon {
-  font-size: 6rem;
-  margin-top: 3em;
-  margin-bottom: 0;
-}
-
-.side-panel-header {
-  margin: 0;
 }
 
 .game-boxes-container {
@@ -236,6 +240,47 @@ ul {
 
 .classic-icon:hover, .wizard-icon:hover {
   width: 28%;
+}
+
+/* LAPTOP - LARGE */
+
+@media screen and (max-width: 1600px) {
+  h1 {
+    font-size: 7rem;
+  }
+  
+  h2, label {
+    font-size: 4.5rem;
+  }
+  
+  h3, input, select {
+    font-size: 3rem;
+  }
+
+  form {
+    width: 70%;
+  }
+
+  label {
+    width: 65%;
+  }
+  
+  input {
+    width: 60%;
+  }
+
+  .classic-box {
+    width: 42%;
+  }
+  
+  .wizard-box {
+    height: 48%;
+    width: 65%;
+  }
+
+  .box-header {
+    margin: 2rem;
+  }
 }
 
 /* HIDDEN */
