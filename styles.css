@@ -1,16 +1,15 @@
-/* DESIGN:
+/* ~
   font-family: 'DynaPuff', 'sans serif'  
   main background: #21D19F (mint)
   side panels background: #45B69C (keppel)
   classic hover state: #EEB868 (earth yellow)
   wizard hover state: #772D8B (eminence)
   view header: #FFEFD3 (papaya whip)
-*/
+~ */
   
-/* GENERAL */
+/* ~ GENERAL ~ */
 
 * {
-  /* border: 1px solid rgb(0, 166, 255); */
   color: white;
 }
 
@@ -48,11 +47,7 @@ html, body {
   height: 100%;
 }
 
-img {
-  width: 25%;
-}
-
-/* TYPOGRAPHY */
+/* ~ TYPOGRAPHY ~ */
 
 h1 {
   font-size: 8.5rem;
@@ -73,7 +68,7 @@ li {
   font-size: 2.3rem; 
 }
 
-/* PRIMARY VIEW ELEMENTS */
+/* ~ MAIN VIEW ~ */
 
 main {
   height: 100%;
@@ -94,6 +89,8 @@ main {
   color: #FFEFD3;
 }
 
+/* ~ SIDE PANELS */
+
 .side-panel {
   width: 20%;
   background-color: #45B69C;
@@ -109,7 +106,7 @@ main {
   margin: 0;
 }
 
-/* SECONDARY VIEW ELEMENTS */
+/* ~ LOGIN FORM */
 
 form {
   width: 55%;
@@ -140,6 +137,8 @@ select {
   width: 12%;
 }
 
+/* ~ BUTTONS & CLICKABLE BOXES ~ */
+
 button {
   border-radius: 32px;
   margin: 2.5em;
@@ -167,23 +166,26 @@ button, .game-box {
   font-size: 3rem;
 }
 
-.classic-button, .wizard-button {
-  height: 10%;
-  width: 80%;
-  background-color: #21D19F;
-  font-size: 2.25rem;
-}
-
 .game-boxes-container {
   height: 100%;
   width: 100%;
   justify-content: space-evenly;
 }
 
+.box-header {
+  margin: 3rem;
+}
+
 .game-box {
   background-color: #45B69C;
   border-radius: 40px;
   text-align: center;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
 }
 
 .classic-box {
@@ -194,6 +196,13 @@ button, .game-box {
 .wizard-box {
   height: 45%;
   width: 50%;
+}
+
+.classic-button, .wizard-button {
+  height: 10%;
+  width: 80%;
+  background-color: #21D19F;
+  font-size: 2.25rem;
 }
 
 .classic-box:hover, .classic-button:hover, .login-button:hover {
@@ -208,14 +217,10 @@ button, .game-box {
   transition: background-color 175ms;
 }
 
-.box-header {
-  margin: 3rem;
-}
+/* ~ FIGHTER ICONS ~ */
 
-ul {
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
+img {
+  width: 25%;
 }
 
 .icons-container {
@@ -242,7 +247,7 @@ ul {
   width: 28%;
 }
 
-/* LAPTOP - LARGE */
+/* ~ RESPONSIVE DESIGN FOR LARGE LAPTOP ~ */
 
 @media screen and (max-width: 1600px) {
   h1 {
@@ -283,7 +288,7 @@ ul {
   }
 }
 
-/* HIDDEN */
+/* ~ HIDDEN ~ */
 
 .hidden {
   display: none;
