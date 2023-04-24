@@ -77,8 +77,13 @@ wizardResetButton.addEventListener('click', function() {
   resetWins(user, computer);
 });
 
-classicGameButton.addEventListener('click', displayChooseGameView);
-wizardGameButton.addEventListener('click', displayChooseGameView);
+classicGameButton.addEventListener('click', function() {
+  displayChooseGameView(game);
+});
+
+wizardGameButton.addEventListener('click', function() {
+  displayChooseGameView(game);
+});
 
 // FUNCTIONS - DATA MODEL
 function createPlayer(name, token, wins = 0) {
@@ -91,9 +96,19 @@ function createPlayer(name, token, wins = 0) {
 };
 
 function createGame(type, player1, player2, winners = []) {
+  var gamePlayer1 = {
+    ...player1,
+    fighter: null
+  }
+
+  var gamePlayer2 = {
+    ... player2,
+    fighter: null
+  }
+  
   game = {
     type: type,
-    players: [player1, player2],
+    players: [gamePlayer1, gamePlayer2],
     winners: winners
   };
   return game;
@@ -137,12 +152,12 @@ function determineWinner(game) {
   var winner;
   
   if ((fighter2 === fighterOptions[fighter1]) || (fighter2 === fighterOptions[fighter1][0]) || (fighter2 === fighterOptions[fighter1][1])) {
-    winner = game.players[0]; 
+    winner = user; 
   } else {
-    winner = game.players[1];
+    winner = computer;
   };
 
-  game.winners.push(winner);
+  game.winners.push(winner.name);
   increaseWins(winner);
   announceWinner(winner);
   return game;
@@ -157,16 +172,6 @@ function resetWins(player1, player2) {
   player1.wins = 0;
   player2.wins = 0;
   displayWins(player1, player2);
-}
-
-function displayResetButton(player1, player2) {
-  if (player1.wins && player2.wins) {
-    show(classicResetButton);
-    show(wizardResetButton);
-  } else {
-    hide(classicResetButton);
-    hide(wizardResetButton);
-  }
 }
 
 // FUNCTIONS - DOM
@@ -190,15 +195,6 @@ function displayPlayers(player1, player2) {
 
   player2Icon.innerText = player2.token;
   player2Name.innerText = player2.name;
-};
-
-function displayWins(player1, player2) {
-  for (var i = 0; i < winLabels.length; i++) {
-    show(winLabels[i]);
-  }
-
-  player1Wins.innerText = player1.wins;
-  player2Wins.innerText = player2.wins;
 };
 
 function displayGame(game) {
@@ -231,7 +227,8 @@ function displayVariationView() {
   hide(loginView);
 };
 
-function displayChooseGameView() {
+function displayChooseGameView(game) {
+  game = null;
   show(chooseGameView);
   hide(classicGameButton);
   hide(wizardGameButton);
@@ -241,6 +238,7 @@ function displayChooseGameView() {
   hide(wizardView);
   hide(resultView);
   hide(loginView);
+  return game;
 };
 
 function displayResult(game) {
@@ -256,6 +254,15 @@ function displayResult(game) {
   displayFighter(fighter1);
   displayFighter(fighter2); 
   setTimeout(reset, 1250, game);
+};
+
+function displayWins(player1, player2) {
+  for (var i = 0; i < winLabels.length; i++) {
+    show(winLabels[i]);
+  }
+
+  player1Wins.innerText = player1.wins;
+  player2Wins.innerText = player2.wins;
 };
 
 function displayFighter(fighter) {
