@@ -13,7 +13,7 @@ I built a fun and interative web-based application that allows the user to play 
 
 ### Preview of App:
 [//]: <> (Provide ONE gif or screenshot of your application - choose the "coolest" piece of functionality to show off.)
-![alt](URL of gif (add .gif to the end) or img)
+![Preview of Wizard Game and Reset Button](https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExODA0ODM5NTAyNTQ5YTU4NDI3OGZkNzA3ZTUwNzU5MjNmYzBjNDgzYSZlcD12MV9pbnRlcm5hbF9naWZzX2dpZklkJmN0PWc/GHLBjQzIgsliD9qBlU/giphy.gif)
 
 ### Context:
 [//]: <> (Give some context for the project here. How long did you have to work on it? How far into the Turing program are you?)
