@@ -87,6 +87,7 @@ wizardGameButton.addEventListener('click', function() {
 });
 
 // ~ * ~ FUNCTIONS: DATA MODEL  ~ * ~ //
+
 function createPlayer(name, token, wins = 0) {
   var player = {
     name: name,
@@ -112,6 +113,7 @@ function createGame(type, player1, player2, winners = []) {
     players: [gamePlayer1, gamePlayer2],
     winners: winners
   };
+
   return game;
 };
 
@@ -159,12 +161,17 @@ function determineWinner(game) {
   };
 
   game.winners.push(winner.name);
-  increaseWins(winner);
+  increaseWins(game, winner);
   announceWinner(winner);
   return game;
 };
 
-function increaseWins(player) {
+function increaseWins(game, player) {
+  for (var i = 0; i < 2; i++) {
+    if (game.players[i].name === player.name) {
+      game.players[i].wins += 1;
+    }
+  }
   player.wins += 1;
   return player;
 };
@@ -182,6 +189,7 @@ function resetFighters(game) {
 };
 
 // ~ * ~ FUNCTIONS: DOM  ~ * ~ //
+
 function show(element) {
   element.classList.remove('hidden');
 };
@@ -258,8 +266,8 @@ function displayResult(game) {
   hide(wizardGameButton);
   hide(classicResetButton);
   hide(wizardResetButton);
-  displayFighter(game, fighter1);
-  displayFighter(game, fighter2); 
+  displayFighter(fighter1);
+  displayFighter(fighter2); 
   setTimeout(reset, 1250, game);
 };
 
