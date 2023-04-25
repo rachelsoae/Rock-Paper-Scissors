@@ -22,7 +22,7 @@ loginButton = document.querySelector('.login-button');
 nameInput = document.querySelector('input');
 iconInput = document.querySelector('select');
 winLabels = document.querySelectorAll('.wins-label');
-loginView = document.querySelector('form')
+loginView = document.querySelector('form');
 player1Icon = document.querySelector('.player1-icon');
 player1Name = document.querySelector('.player1-name');
 player1Wins = document.querySelector('.player1-wins');
@@ -41,14 +41,14 @@ wizardView = document.querySelector('.choose-fighter-wizard');
 fighterSection = document.querySelector('.fighters');
 resultView = document.querySelector('.result-view');
 classicFighterContainer = document.querySelector('.classic-icons');
-wizardFighterContainer = document.querySelector('.wizard-icons')
+wizardFighterContainer = document.querySelector('.wizard-icons');
 result = document.querySelector('.result');
 
 // ~ * ~ EVENT LISTENERS ~ * ~ //
 
 loginButton.addEventListener('click', function() {
   user = createPlayer(`${nameInput.value}`, `${iconInput.value}`);
-  computer = createPlayer('Computer', '🤖')
+  computer = createPlayer('Computer', '🤖');
   login();
 });
 
@@ -104,7 +104,7 @@ function createGame(type, player1, player2, winners = []) {
   };
 
   var gamePlayer2 = {
-    ... player2,
+    ...player2,
     fighter: null
   };
   
@@ -154,7 +154,7 @@ function detectDraw(game) {
 function determineWinner(game) {
   var winner;
 
-  if ((fighter2 === fighterOptions[fighter1]) || (fighter2 === fighterOptions[fighter1][0]) || (fighter2 === fighterOptions[fighter1][1])) {
+  if ((fighter2 === fighterOptions[fighter1][0]) || (fighter2 === fighterOptions[fighter1][1])) {
     winner = user; 
   } else {
     winner = computer;
@@ -268,7 +268,7 @@ function displayResult(game) {
   hide(wizardResetButton);
   displayFighter(fighter1);
   displayFighter(fighter2); 
-  setTimeout(reset, 1250, game);
+  setTimeout(newRound, 1250, game);
 };
 
 function displayFighter(fighter) {
@@ -318,7 +318,7 @@ function displayWins(player1, player2) {
   player2Wins.innerText = player2.wins;
 };
 
-function reset(game) {
+function newRound(game) {
   fighterSection.innerHTML = '';
   resetFighters(game);
   displayGame(game);
