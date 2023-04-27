@@ -13,6 +13,7 @@ I built a fun and interative web-based application that allows the user to play 
 
 ### Preview of App:
 [//]: <> (Provide ONE gif or screenshot of your application - choose the "coolest" piece of functionality to show off.)
+Access the deployed application [here](https://rachelsoae.github.io/Rock-Paper-Scissors/).
 ![Preview of Wizard Game and Reset Button](https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExODA0ODM5NTAyNTQ5YTU4NDI3OGZkNzA3ZTUwNzU5MjNmYzBjNDgzYSZlcD12MV9pbnRlcm5hbF9naWZzX2dpZklkJmN0PWc/GHLBjQzIgsliD9qBlU/giphy.gif)
 
 ### Context:
