@@ -1,11 +1,10 @@
 // ~ * ~ DATA MODEL ~ * ~ //
-
-var user;
-var computer;
-var game;
-var fighter1;
-var fighter2;
-var fighterOptions = {
+let user;
+let computer;
+let game;
+let fighter1;
+let fighter2;
+const fighterOptions = {
   rock: ['scissors'], 
   paper: ['rock'],
   scissors: ['paper'],
@@ -89,7 +88,7 @@ wizardGameButton.addEventListener('click', function() {
 // ~ * ~ FUNCTIONS: DATA MODEL  ~ * ~ //
 
 function createPlayer(name, token, wins = 0) {
-  var player = {
+  const player = {
     name: name,
     token: token,
     wins: wins
@@ -98,12 +97,12 @@ function createPlayer(name, token, wins = 0) {
 };
 
 function createGame(type, player1, player2, winners = []) {
-  var gamePlayer1 = {
+  let gamePlayer1 = {
     ...player1,
     fighter: null
   };
 
-  var gamePlayer2 = {
+  let gamePlayer2 = {
     ...player2,
     fighter: null
   };
@@ -127,15 +126,15 @@ function updateFighters(game, userSelection) {
 };
 
 function getRandomFighter(game) {
-  var fighters = Object.keys(fighterOptions);
-
+  const fighters = Object.keys(fighterOptions);
+  let index;
   if (game.type === 'classic') {
-    var index = Math.floor(Math.random() * 3);
+    index = Math.floor(Math.random() * 3);
   } else {
-    var index = ((Math.floor(Math.random() * 5)) + 3);
+    index = ((Math.floor(Math.random() * 5)) + 3);
   };
 
-  var fighter = fighters[index];
+  let fighter = fighters[index];
   return fighter;
 };
 
@@ -152,7 +151,7 @@ function detectDraw(game) {
 };
 
 function determineWinner(game) {
-  var winner;
+  let winner;
 
   if ((fighter2 === fighterOptions[fighter1][0]) || (fighter2 === fighterOptions[fighter1][1])) {
     winner = user; 
@@ -172,7 +171,7 @@ function increaseWins(game, player) {
       gamePlayer.wins += 1;
     }
   });
-  console.log(game.players);
+
   player.wins += 1;
   return player;
 };
