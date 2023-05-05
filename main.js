@@ -167,11 +167,12 @@ function determineWinner(game) {
 };
 
 function increaseWins(game, player) {
-  for (var i = 0; i < 2; i++) {
-    if (game.players[i].name === player.name) {
-      game.players[i].wins += 1;
+  game.players.forEach(gamePlayer => {
+    if (gamePlayer.name === player.name) {
+      gamePlayer.wins += 1;
     }
-  }
+  });
+  console.log(game.players);
   player.wins += 1;
   return player;
 };
@@ -310,9 +311,9 @@ function announceWinner(player) {
 };
 
 function displayWins(player1, player2) {
-  for (var i = 0; i < winLabels.length; i++) {
-    show(winLabels[i]);
-  };
+  winLabels.forEach(label => {
+    show(label);
+  });
 
   player1Wins.innerText = player1.wins;
   player2Wins.innerText = player2.wins;
