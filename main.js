@@ -4,16 +4,49 @@ let computer;
 let game;
 let fighter1;
 let fighter2;
-const fighterOptions = {
-  rock: ['scissors'], 
-  paper: ['rock'],
-  scissors: ['paper'],
-  harry: ['voldemort', 'malfoy'],
-  malfoy: ['dumbledore', 'snape'],
-  snape: ['dumbledore', 'harry'],
-  voldemort: ['snape', 'malfoy'],
-  dumbledore: ['harry', 'voldemort']
-};
+
+const fighters = [
+  {
+    name: 'rock',
+    opponents: ['scissors'],
+    img: `<img src="assets/happy-rocks.png" alt="a cartoon big and small rock sitting in a tuft of grass with happy smiling faces">`
+  },
+  {
+    name: 'paper',
+    opponents: ['rock'],
+    img: `<img src="assets/happy-paper.png" alt="a cartoon lined piece of paper with a happy smiling face">`
+  },
+  {
+    name: 'scissors',
+    opponents: ['paper'],
+    img:`<img src="assets/happy-scissors.png" alt="a pair of cartoon scissors">`
+  },
+  {
+    name: 'harry',
+    opponents: ['voldemort', 'malfoy'],
+    img:`<img src="assets/harry.png" alt="cartoon of Harry Potter">`
+  },
+  {
+    name: 'malfoy',
+    opponents: ['dumbledore', 'snape'],
+    img:`<img src="assets/malfoy.png" alt="cartoon of Draco Malfoy">`
+  },
+  {
+    name: 'snape',
+    opponents: ['dumbledore', 'harry'],
+    img:`<img src="assets/snape.png" alt="cartoon of Severus Snape">`
+  },
+  {
+    name: 'voldemort',
+    opponents: ['snape', 'malfoy'],
+    img:`<img src="assets/voldemort.png" alt="cartoon of Lord Voldemort">`
+  },
+  {
+    name: 'dumbledore',
+    opponents: ['harry', 'voldemort'],
+    img:`<img src="assets/dumbledore.png" alt="cartoon of Albus Dumbledore">`
+  }
+];
 
 // ~ * ~ DOM VARIABLES ~ * ~ //
 
@@ -117,7 +150,7 @@ function createGame(type, player1, player2, winners = []) {
 };
 
 function updateFighters(game, userSelection) {
-  game.players[0].fighter = userSelection.id;
+  game.players[0].fighter = fighters.find(fighter => fighter.name === userSelection.id);
   game.players[1].fighter = getRandomFighter(game);
   fighter1 = game.players[0].fighter;
   fighter2 = game.players[1].fighter;
@@ -126,7 +159,6 @@ function updateFighters(game, userSelection) {
 };
 
 function getRandomFighter(game) {
-  const fighters = Object.keys(fighterOptions);
   let index;
   if (game.type === 'classic') {
     index = Math.floor(Math.random() * 3);
@@ -134,8 +166,7 @@ function getRandomFighter(game) {
     index = ((Math.floor(Math.random() * 5)) + 3);
   };
 
-  let fighter = fighters[index];
-  return fighter;
+  return fighters[index];
 };
 
 function detectDraw(game) {
@@ -152,13 +183,7 @@ function detectDraw(game) {
 
 function determineWinner(game) {
   let winner;
-
-  if ((fighter2 === fighterOptions[fighter1][0]) || (fighter2 === fighterOptions[fighter1][1])) {
-    winner = user; 
-  } else {
-    winner = computer;
-  };
-
+  fighter1.opponents.some(opponent => opponent === fighter2.name) ? winner = user : winner = computer;
   game.winners.push(winner.name);
   increaseWins(game, winner);
   announceWinner(winner);
@@ -271,33 +296,12 @@ function displayResult(game) {
   setTimeout(newRound, 1250, game);
 };
 
-function displayFighter(fighter) {
-  switch (fighter) {
-    case 'rock':
-      fighterSection.innerHTML += `<img src="assets/happy-rocks.png" alt="a cartoon big and small rock sitting in a tuft of grass with happy smiling faces">`;
-      break;
-    case 'paper':
-      fighterSection.innerHTML += `<img src="assets/happy-paper.png" alt="a cartoon lined piece of paper with a happy smiling face">`;
-      break;
-    case 'scissors':
-      fighterSection.innerHTML += `<img src="assets/happy-scissors.png" alt="a pair of cartoon scissors">`;
-      break;
-    case 'harry':
-      fighterSection.innerHTML += `<img src="assets/harry.png" alt="cartoon of Harry Potter">`;
-      break;
-    case 'malfoy':
-      fighterSection.innerHTML += `<img src="assets/malfoy.png" alt="cartoon of Draco Malfoy">`;
-      break;
-    case 'snape':
-      fighterSection.innerHTML += `<img src="assets/snape.png" alt="cartoon of Severus Snape">`;
-      break;
-    case 'voldemort':
-      fighterSection.innerHTML += `<img src="assets/voldemort.png" alt="cartoon of Lord Voldemort">`;
-      break;
-    case 'dumbledore':
-      fighterSection.innerHTML += `<img src="assets/dumbledore.png" alt="cartoon of Albus Dumbledore">`;
-      break;
-  };
+function displayFighter(selectedFighter) {
+  fighters.forEach(fighter => {
+    if (fighter.name === selectedFighter.name) {
+      fighterSection.innerHTML += fighter.img;
+    };
+  });
 };
 
 function announceDraw() {
